@@ -3,7 +3,6 @@
   "description": "A package for adding paginator functionality to react apps",
   "version": "0.1.0",
   "main": "dist/index.js",
-  "module": "dist/index.js",
   "files": [
     "dist",
     "animate.gif",
@@ -46,8 +45,8 @@
     "not op_mini all"
   ],
   "peerDependencies": {
-    "react": ">=16.8.*",
-    "react-dom": ">=16.8.*"
+    "react": ">=16.8.0",
+    "react-dom": ">=16.8.0"
   },
   "devDependencies": {
     "@babel/cli": "^7.1.0",

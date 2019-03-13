@@ -21,3 +21,10 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+#vscode local history
+.history
+
+#all src files except lib
+src/*
+!src/lib

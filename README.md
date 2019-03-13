@@ -1,68 +1,98 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# React Paginator
 
-## Available Scripts
+![demo](./animate.gif)
+A library for adding simple paginator functionality to your react app.
 
-In the project directory, you can run:
+Requires react >= 16.8.\*
 
-### `npm start`
+## Installation
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Run the following command:
+`npm install react-paginator`
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+## Usage
 
-### `npm test`
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Paginator from 'react-paginator';
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+function App() {
+  const [offset, setOffset] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
 
-### `npm run build`
+  const data = [page1, page2, page3, page4, page5, page6];
 
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
+  return (
+    <div>
+      <Pagination
+        totalRecords={data.length}
+        pageLimit={4}
+        pageNeighbours={1}
+        setOffset={setOffset}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  );
+}
 
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
+export default App;
+```
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+## Props
 
-### `npm run eject`
+| Property       | Type     | Description                                                    |
+| -------------- | -------- | -------------------------------------------------------------- |
+| totalRecords   | Number   | The length of the data we are tabulating                       |
+| pageLimit      | Number   | Minimum number of records per page                             |
+| pageNeighbours | Number   | Number of page blocks by the left and right of the middle page |
+| setOffset      | function | function that updates the offset state                         |
+| setCurrentPage | function | function that updates the current page state                   |
+| currentPage    | Number   | The current page state                                         |
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Example
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+```javascript
+import React from 'react';
+import ReactDOM from 'react-dom';
+import Paginator from 'paginator';
+import { fetchData } from './data-fetcher';
 
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+function App() {
+  const pageLimit = 10;
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+  const [offset, setOffset] = React.useState(0);
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const [data, setData] = React.useState([]);
+  const [currentData, setCurrentData] = React.useState([]);
 
-## Learn More
+  useEffect(() => {
+    fetchData.then(data => setData(data));
+  }, []);
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+  useEffect(() => {
+    setCurrentData(data.slice(offset, offset + pageLimit));
+  }, [offset, data]);
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+  return (
+    <div>
+      <ul>
+        {currentData.map(data => (
+          <li>{data}</li>
+        ))}
+      </ul>
+      <Pagination
+        totalRecords={data.length}
+        pageLimit={pageLimit}
+        pageNeighbours={2}
+        setOffset={setOffset}
+        currentPage={currentPage}
+        setCurrentPage={setCurrentPage}
+      />
+    </div>
+  );
+}
 
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+export default App;
+```

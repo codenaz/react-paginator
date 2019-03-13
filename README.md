@@ -1,9 +1,10 @@
 # React Hooks Paginator
 
 ![demo](./animate.gif)
+
 A library for adding simple paginator functionality to your react app.
 
-Requires react >= 16.8.\*
+Requires react >= 16.8.0
 
 ## Installation
 
@@ -15,7 +16,7 @@ Run the following command:
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Paginator from 'react-paginator';
+import Paginator from 'react-hooks-paginator';
 
 function App() {
   const [offset, setOffset] = React.useState(0);
@@ -56,7 +57,7 @@ export default App;
 ```javascript
 import React from 'react';
 import ReactDOM from 'react-dom';
-import Paginator from 'paginator';
+import Paginator from 'react-hooks-paginator';
 import { fetchData } from './data-fetcher';
 
 function App() {

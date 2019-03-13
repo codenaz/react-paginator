@@ -1,4 +1,4 @@
-# React Paginator
+# React Hooks Paginator
 
 ![demo](./animate.gif)
 A library for adding simple paginator functionality to your react app.
@@ -8,7 +8,7 @@ Requires react >= 16.8.\*
 ## Installation
 
 Run the following command:
-`npm install react-paginator`
+`npm install react-hooks-paginator`
 
 ## Usage
 

@@ -1,25 +1,40 @@
 {
-  "name": "react-paginator",
+  "name": "react-hooks-paginator",
+  "description": "A package for adding paginator functionality to react apps",
   "version": "0.1.0",
   "main": "dist/index.js",
   "module": "dist/index.js",
   "files": [
     "dist",
+    "animate.gif",
     "README.md"
   ],
   "repository": {
     "type": "git",
     "url": "https://github.com/emekadev/react-paginator"
   },
+  "keywords": [
+    "react",
+    "paginate",
+    "page",
+    "pagination",
+    "paginator"
+  ],
+  "author": {
+    "name": "Nwakwoke Patrick",
+    "email": "patricknwak@gmail.com"
+  },
+  "license": "MIT",
   "dependencies": {
     "bootstrap": "^4.3.1",
     "reactstrap": "^7.1.0"
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "rm -rf dist && NODE_ENV=production babel src/lib --out-dir dist --copy-files --ignore __tests__,spec.js,test.js,__snapshots__",
+    "build": "webpack",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -30,12 +45,28 @@
     "not ie <= 11",
     "not op_mini all"
   ],
+  "peerDependencies": {
+    "react": ">=16.8.*",
+    "react-dom": ">=16.8.*"
+  },
   "devDependencies": {
+    "@babel/cli": "^7.1.0",
+    "@babel/core": "^7.1.0",
+    "@babel/preset-env": "^7.1.0",
+    "@babel/preset-react": "^7.0.0",
     "babel-cli": "^6.26.0",
+    "babel-loader": "^8.0.5",
+    "babel-preset-react": "^6.24.1",
+    "css-loader": "^2.1.1",
     "node-sass": "^4.11.0",
     "prettier": "^1.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8"
+    "react-scripts": "2.1.8",
+    "sass-loader": "^7.1.0",
+    "style-loader": "^0.23.1",
+    "webpack": "^4.28.3",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.1.14"
   }
 }

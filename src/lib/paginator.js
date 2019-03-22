@@ -2,12 +2,6 @@ import React, { useState, useCallback, useEffect, useRef } from 'react';
 import PropTypes from 'prop-types';
 import './style/main.scss';
 
-import {
-  Pagination as Paginate,
-  PaginationItem,
-  PaginationLink
-} from 'reactstrap';
-
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
@@ -146,41 +140,79 @@ function Paginator(props) {
   const pages = fetchPageNumbers();
 
   return (
-    <Paginate className={props.className}>
+    <ul className={props.pageContainerClass}>
       {pages.map((page, index) => {
         if (page === LEFT_PAGE)
           return (
-            <PaginationItem key={index}>
-              <PaginationLink previous onClick={handleMoveLeft} href="#" />
-            </PaginationItem>
+            <li className={props.pageItemClass} key={index}>
+              <a
+                className={props.pageLinkClass}
+                onClick={handleMoveLeft}
+                href="#"
+              >
+                {props.pagePrevText}
+              </a>
+            </li>
           );
 
         if (page === RIGHT_PAGE)
           return (
-            <PaginationItem key={index}>
-              <PaginationLink next href="#" onClick={handleMoveRight} />
-            </PaginationItem>
+            <li className={props.pageItemClass} key={index}>
+              <a
+                className={props.pageLinkClass}
+                next
+                href="#"
+                onClick={handleMoveRight}
+              >
+                {props.pageNextText}
+              </a>
+            </li>
           );
 
         return (
-          <PaginationItem active={currentPage === page} key={index}>
-            <PaginationLink href="#" onClick={e => handleClick(page, e)}>
+          <li
+            className={`${props.pageItemClass} ${
+              currentPage === page ? props.pageActiveClass : null
+            }`}
+            active={currentPage === page}
+            key={index}
+          >
+            <a
+              className={props.pageLinkClass}
+              href="#"
+              onClick={e => handleClick(page, e)}
+            >
               {page}
-            </PaginationLink>
-          </PaginationItem>
+            </a>
+          </li>
         );
       })}
-    </Paginate>
+    </ul>
   );
 }
 
+Paginator.defaultProps = {
+  pageContainerClass: 'pagination',
+  pageActiveClass: 'active',
+  pageItemClass: 'page-item',
+  pageLinkClass: 'page-link',
+  pageNextText: 'Next »',
+  pagePrevText: '« Prev'
+};
+
 Paginator.propTypes = {
-  totalRecords: PropTypes.number.isRequired,
+  currentPage: PropTypes.number,
+  pageActiveClass: PropTypes.string,
+  pageNextText: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  pagePrevText: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  pageContainerClass: PropTypes.string,
+  pageItemClass: PropTypes.string,
   pageLimit: PropTypes.number,
+  pageLinkClass: PropTypes.string,
   pageNeighbours: PropTypes.number,
-  setOffset: PropTypes.func,
   setCurrentPage: PropTypes.func,
-  currentPage: PropTypes.number
+  setOffset: PropTypes.func,
+  totalRecords: PropTypes.number.isRequired
 };
 
 export default Paginator;

@@ -1,7 +1,7 @@
 {
   "name": "react-hooks-paginator",
   "description": "A package for adding paginator functionality to react apps",
-  "version": "0.1.2",
+  "version": "0.1.3",
   "main": "dist/index.js",
   "files": [
     "dist",

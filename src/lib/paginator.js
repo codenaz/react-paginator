@@ -174,7 +174,6 @@ function Paginator(props) {
             className={`${props.pageItemClass} ${
               currentPage === page ? props.pageActiveClass : null
             }`}
-            active={currentPage === page}
             key={index}
           >
             <a
@@ -192,7 +191,7 @@ function Paginator(props) {
 }
 
 Paginator.defaultProps = {
-  pageContainerClass: 'pagination',
+  pageContainerClass: 'react-hooks-paginator',
   pageActiveClass: 'active',
   pageItemClass: 'page-item',
   pageLinkClass: 'page-link',

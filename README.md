@@ -1,4 +1,5 @@
 # React Hooks Paginator
+[![All Contributors](https://img.shields.io/badge/all_contributors-1-orange.svg?style=flat-square)](#contributors)
 
 ![demo](./animate.gif)
 
@@ -103,3 +104,19 @@ function App() {
 
 export default App;
 ```
+
+## Contributors ✨
+
+Thanks goes to these wonderful people ([emoji key](https://allcontributors.org/docs/en/emoji-key)):
+
+<!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore -->
+<table>
+  <tr>
+    <td align="center"><a href="https://remilekunsalami.com"><img src="https://avatars3.githubusercontent.com/u/23614400?v=4" width="100px;" alt="Remilekun Salami"/><br /><sub><b>Remilekun Salami</b></sub></a><br /><a href="https://github.com/codenaz/react-paginator/commits?author=remiilekun" title="Code">💻</a></td>
+  </tr>
+</table>
+
+<!-- ALL-CONTRIBUTORS-LIST:END -->
+
+This project follows the [all-contributors](https://github.com/all-contributors/all-contributors) specification. Contributions of any kind welcome!

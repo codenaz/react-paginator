@@ -26,7 +26,7 @@ function App() {
 
   return (
     <div>
-      <Pagination
+      <Paginator
         totalRecords={data.length}
         pageLimit={4}
         pageNeighbours={1}
@@ -43,20 +43,20 @@ export default App;
 
 ## Props
 
-| Property           | Type                | Default      | Description                                                    |
-| ------------------ | ------------------- | ------------ | -------------------------------------------------------------- |
-| totalRecords       | Number (required)   |              | The length of the data we are tabulating                       |
-| pageLimit          | Number (required)   |              | Minimum number of records per page                             |
-| pageNeighbours     | Number (required)   |              | Number of page blocks by the left and right of the middle page |
-| setOffset          | function (required) |              | function that updates the offset state                         |
-| setCurrentPage     | function (required) |              | function that updates the current page state                   |
-| currentPage        | Number (required)   |              | The current page state                                         |
-| pageContainerClass | String              | `pagination` | Paginator container classname                                  |
-| pageActiveClass    | String              | `active`     | Active page item classname                                     |
-| pageItemClass      | String              | `page-item`  | Page item classname                                            |
-| pageLinkClass      | String              | `page-link`  | Page link classname                                            |
-| pagePrevText       | String or Node      | `Next »`     | Prev page item text                                            |
-| pageNextText       | String or Node      | `« Prev`     | Next page item text                                            |
+| Property           | Type                | Default                 | Description                                                    |
+| ------------------ | ------------------- | ----------------------- | -------------------------------------------------------------- |
+| totalRecords       | Number (required)   |                         | The length of the data we are tabulating                       |
+| pageLimit          | Number (required)   |                         | Minimum number of records per page                             |
+| pageNeighbours     | Number (required)   |                         | Number of page blocks by the left and right of the middle page |
+| setOffset          | function (required) |                         | function that updates the offset state                         |
+| setCurrentPage     | function (required) |                         | function that updates the current page state                   |
+| currentPage        | Number (required)   |                         | The current page state                                         |
+| pageContainerClass | String              | `react-hooks-paginator` | Paginator container classname                                  |
+| pageActiveClass    | String              | `active`                | Active page item classname                                     |
+| pageItemClass      | String              | `page-item`             | Page item classname                                            |
+| pageLinkClass      | String              | `page-link`             | Page link classname                                            |
+| pagePrevText       | String or Node      | `Next »`                | Prev page item text                                            |
+| pageNextText       | String or Node      | `« Prev`                | Next page item text                                            |
 
 ## Example
 
@@ -89,7 +89,7 @@ function App() {
           <li>{data}</li>
         ))}
       </ul>
-      <Pagination
+      <Paginator
         totalRecords={data.length}
         pageLimit={pageLimit}
         pageNeighbours={2}

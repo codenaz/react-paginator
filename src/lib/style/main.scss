@@ -1,5 +1,43 @@
-@import '~bootstrap/scss/functions';
-@import '~bootstrap/scss/variables';
-@import '~bootstrap/scss/mixins';
-@import '~bootstrap/scss/reboot';
-@import '~bootstrap/scss/pagination';
+.react-hooks-paginator {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0;
+
+  .page-item {
+    list-style: none;
+    &:first-child {
+      .page-link {
+        margin-left: 0;
+        border-top-left-radius: 3px;
+        border-bottom-left-radius: 3px;
+      }
+    }
+
+    &:last-child {
+      .page-link {
+        border-top-right-radius: 3px;
+        border-bottom-right-radius: 3px;
+      }
+    }
+
+    &:hover,
+    &.active {
+      .page-link {
+        background-color: #3895d3;
+        border-color: #3895d3;
+        color: #fff;
+      }
+    }
+  }
+
+  .page-link {
+    border: 1px solid #dee2e6;
+    color: #4a4a4a;
+    margin-left: -1px;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s;
+  }
+}

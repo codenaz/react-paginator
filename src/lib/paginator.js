@@ -40,6 +40,14 @@ function Paginator(props) {
   const [state, setState] = useState(() => init());
   const firstRun = useRef(true);
 
+  const gotoPage = useCallback(
+    page => {
+      const currentPage = Math.max(1, Math.min(page, state.totalPages));
+      props.setCurrentPage(currentPage);
+    },
+    [state.totalPages, props.pageLimit]
+  );
+
   useEffect(() => {
     gotoPage(1);
   }, [gotoPage]);
@@ -57,14 +65,6 @@ function Paginator(props) {
     const totalPages = Math.ceil(totalRecords / state.pageLimit);
     setState({ ...state, totalRecords: props.totalRecords, totalPages });
   }, [props.totalRecords]);
-
-  const gotoPage = useCallback(
-    page => {
-      const currentPage = Math.max(1, Math.min(page, state.totalPages));
-      props.setCurrentPage(currentPage);
-    },
-    [state.totalPages, props.pageLimit]
-  );
 
   const handleClick = (page, evt) => {
     evt.preventDefault();
@@ -145,27 +145,18 @@ function Paginator(props) {
         if (page === LEFT_PAGE)
           return (
             <li className={props.pageItemClass} key={index}>
-              <a
-                className={props.pageLinkClass}
-                onClick={handleMoveLeft}
-                href="#"
-              >
+              <button className={props.pagePrevClass} onClick={handleMoveLeft}>
                 {props.pagePrevText}
-              </a>
+              </button>
             </li>
           );
 
         if (page === RIGHT_PAGE)
           return (
             <li className={props.pageItemClass} key={index}>
-              <a
-                className={props.pageLinkClass}
-                next
-                href="#"
-                onClick={handleMoveRight}
-              >
+              <button className={props.pageNextClass} onClick={handleMoveRight}>
                 {props.pageNextText}
-              </a>
+              </button>
             </li>
           );
 
@@ -176,13 +167,12 @@ function Paginator(props) {
             }`}
             key={index}
           >
-            <a
+            <button
               className={props.pageLinkClass}
-              href="#"
               onClick={e => handleClick(page, e)}
             >
               {page}
-            </a>
+            </button>
           </li>
         );
       })}
@@ -196,14 +186,18 @@ Paginator.defaultProps = {
   pageItemClass: 'page-item',
   pageLinkClass: 'page-link',
   pageNextText: 'Next »',
-  pagePrevText: '« Prev'
+  pagePrevText: '« Prev',
+  pagePrevClass: 'page-link',
+  pageNextClass: 'page-link'
 };
 
 Paginator.propTypes = {
   currentPage: PropTypes.number,
   pageActiveClass: PropTypes.string,
-  pageNextText: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
-  pagePrevText: PropTypes.oneOf([PropTypes.string, PropTypes.node]),
+  pageNextText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  pagePrevText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
+  pagePrevClass: PropTypes.string,
+  pageNextClass: PropTypes.string,
   pageContainerClass: PropTypes.string,
   pageItemClass: PropTypes.string,
   pageLimit: PropTypes.number,

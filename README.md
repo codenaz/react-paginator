@@ -1,5 +1,7 @@
 # React Hooks Paginator
 
+[![Build Status](https://travis-ci.org/codenaz/react-paginator.svg?branch=master)](https://travis-ci.org/codenaz/react-paginator)
+
 ![demo](./animate.gif)
 
 A library for adding simple paginator functionality to your react app.
@@ -57,6 +59,8 @@ export default App;
 | pageLinkClass      | String              | `page-link`             | Page link classname                                            |
 | pagePrevText       | String or Node      | `Next »`                | Prev page item text                                            |
 | pageNextText       | String or Node      | `« Prev`                | Next page item text                                            |
+| pagePrevClass      | String              | `page-link`             | Prev page custom class                                         |
+| pageNextClass      | String              | `next-link`             | Next page custom class                                         |
 
 ## Example
 

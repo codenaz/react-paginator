@@ -1,0 +1,57 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`renders correctly 1`] = `
+<body>
+  <div>
+    <ul
+      class="react-hooks-paginator"
+    >
+      <li
+        class="page-item active"
+      >
+        <button
+          class="page-link"
+        >
+          1
+        </button>
+      </li>
+      <li
+        class="page-item null"
+      >
+        <button
+          class="page-link"
+        >
+          2
+        </button>
+      </li>
+      <li
+        class="page-item null"
+      >
+        <button
+          class="page-link"
+        >
+          3
+        </button>
+      </li>
+      <li
+        class="page-item null"
+      >
+        <button
+          class="page-link"
+        >
+          4
+        </button>
+      </li>
+      <li
+        class="page-item null"
+      >
+        <button
+          class="page-link"
+        >
+          5
+        </button>
+      </li>
+    </ul>
+  </div>
+</body>
+`;

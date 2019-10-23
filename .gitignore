@@ -28,3 +28,4 @@ yarn-error.log*
 #all src files except lib
 src/*
 !src/lib
+!src/__tests__

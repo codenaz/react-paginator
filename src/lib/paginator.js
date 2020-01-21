@@ -1,5 +1,5 @@
 import React, { useState, useCallback, useEffect, useRef } from 'react';
-import PropTypes from 'prop-types';
+import { number, string, func, oneOfType, node } from 'prop-types';
 import './style/main.scss';
 
 const LEFT_PAGE = 'LEFT';
@@ -164,7 +164,7 @@ function Paginator(props) {
           <li
             className={`${props.pageItemClass} ${
               currentPage === page ? props.pageActiveClass : null
-              }`}
+            }`}
             key={index}
           >
             <button
@@ -192,20 +192,20 @@ Paginator.defaultProps = {
 };
 
 Paginator.propTypes = {
-  currentPage: PropTypes.number,
-  pageActiveClass: PropTypes.string,
-  pageNextText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  pagePrevText: PropTypes.oneOfType([PropTypes.string, PropTypes.node]),
-  pagePrevClass: PropTypes.string,
-  pageNextClass: PropTypes.string,
-  pageContainerClass: PropTypes.string,
-  pageItemClass: PropTypes.string,
-  pageLimit: PropTypes.number,
-  pageLinkClass: PropTypes.string,
-  pageNeighbours: PropTypes.number,
-  setCurrentPage: PropTypes.func,
-  setOffset: PropTypes.func,
-  totalRecords: PropTypes.number.isRequired
+  currentPage: number,
+  pageActiveClass: string,
+  pageNextText: oneOfType([string, node]),
+  pagePrevText: oneOfType([string, node]),
+  pagePrevClass: string,
+  pageNextClass: string,
+  pageContainerClass: string,
+  pageItemClass: string,
+  pageLimit: number,
+  pageLinkClass: string,
+  pageNeighbours: number,
+  setCurrentPage: func,
+  setOffset: func,
+  totalRecords: number.isRequired
 };
 
 export default Paginator;

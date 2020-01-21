@@ -1,5 +1,6 @@
 const path = require('path');
-const webpack = require('webpack');
+const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+  .BundleAnalyzerPlugin;
 
 module.exports = {
   entry: './src/lib/index.js',
@@ -47,5 +48,11 @@ module.exports = {
       amd: 'ReactDOM',
       root: 'ReactDOM'
     }
-  }
+  },
+  plugins: [
+    new BundleAnalyzerPlugin({
+      analyzerMode: 'disabled',
+      generateStatsFile: true
+    })
+  ]
 };

@@ -29,3 +29,5 @@ yarn-error.log*
 src/*
 !src/lib
 !src/__tests__
+
+stats.json

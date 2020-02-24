@@ -7,4 +7,4 @@ webpack.*
 .prettierrc
 .history
 package-lock.json
-dist/stats.json
+stats.html

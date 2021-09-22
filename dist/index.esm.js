@@ -1354,8 +1354,8 @@ function Paginator(props) {
     props.setCurrentPage(currentPage);
   }, [state.totalPages, props.pageLimit]);
   useEffect(function () {
-    gotoPage(1);
-  }, [gotoPage]);
+    gotoPage(props.currentPage || 1);
+  }, [gotoPage, props.currentPage]);
   useEffect(function () {
     props.setOffset((props.currentPage - 1) * props.pageLimit);
   }, [props.currentPage]);

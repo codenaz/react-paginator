@@ -1,7 +1,7 @@
 {
   "name": "react-hooks-paginator",
   "description": "A package for adding paginator functionality to react apps",
-  "version": "0.4.4",
+  "version": "0.5.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -28,8 +28,7 @@
     "build": "del dist && rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepublish": "npm run build",
-    "bundle-report": "webpack-bundle-analyzer dist/stats.json"
+    "prepublish": "npm run build"
   },
   "eslintConfig": {
     "extends": "react-app"

@@ -49,8 +49,8 @@ function Paginator(props) {
   );
 
   useEffect(() => {
-    gotoPage(1);
-  }, [gotoPage]);
+    gotoPage(props.currentPage || 1);
+  }, [gotoPage, props.currentPage]);
 
   useEffect(() => {
     props.setOffset((props.currentPage - 1) * props.pageLimit);

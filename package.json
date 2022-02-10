@@ -55,7 +55,7 @@
     "babel-loader": "8.0.5",
     "babel-preset-react": "6.24.1",
     "del-cli": "^3.0.0",
-    "node-sass": "^4.11.0",
+    "node-sass": "^7.0.0",
     "prettier": "^1.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",

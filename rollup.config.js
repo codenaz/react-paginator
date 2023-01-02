@@ -28,7 +28,10 @@ export default [
     ],
     plugins: [
       external(),
-      postcss(),
+      postcss({
+        extensions: ['.css', '.scss'],
+        extract: 'dist/styles.css'
+      }),
       babel({
         exclude: 'node_modules/**'
       }),
@@ -42,7 +45,7 @@ export default [
   {
     input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: "es" }],
-    // external: [/\.css$/],
+    external: [/\.css$/],
     plugins: [dts()],
   }
 ]

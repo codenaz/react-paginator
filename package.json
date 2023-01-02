@@ -1,6 +1,6 @@
 {
-  "name": "react-hooks-paginator",
-  "description": "A package for adding paginator functionality to react apps",
+  "name": "@kerosine9/react-hooks-paginator",
+  "description": "A package for adding paginator functionality to react apps (typescript fork",
   "version": "0.6.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
@@ -9,7 +9,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "https://github.com/codenaz/react-paginator"
+    "url": "https://github.com/camilomontoyau/react-paginator"
   },
   "types": "dist/index.d.ts",
   "type": "module",
@@ -73,6 +73,7 @@
     "rollup-plugin-dts": "^5.1.0",
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.2",
+    "rollup-plugin-visualizer": "^5.9.0",
     "typescript": "^4.9.4",
     "webpack": "4.28.3"
   }

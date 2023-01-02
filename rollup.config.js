@@ -5,7 +5,6 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
 import { visualizer } from 'rollup-plugin-visualizer';
 import typescript from '@rollup/plugin-typescript';
-import terser from '@rollup/plugin-terser';
 import dts from 'rollup-plugin-dts';
 
 import pkg from './package.json' assert { type: "json" };
@@ -30,7 +29,7 @@ export default [
       external(),
       postcss({
         extensions: ['.css', '.scss'],
-        extract: 'dist/styles.css'
+        extract: 'dist/types/main.scss'
       }),
       babel({
         exclude: 'node_modules/**'
@@ -38,14 +37,13 @@ export default [
       resolve(),
       commonjs(),
       visualizer(),
-      typescript({ tsconfig: './tsconfig.json' }),
-      terser()
+      typescript({ tsconfig: './tsconfig.json' })
     ]
   },
   {
     input: 'dist/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: "es" }],
-    external: [/\.css$/],
+    external: [/\.scss$/],
     plugins: [dts()],
   }
 ]

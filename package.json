@@ -1,7 +1,7 @@
 {
   "name": "react-hooks-paginator",
   "description": "A package for adding paginator functionality to react apps",
-  "version": "0.5.0",
+  "version": "0.6.0",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [
@@ -63,12 +63,6 @@
     "react-dom": "^16.8.4",
     "react-scripts": "2.1.8",
     "rollup": "^3.9.1",
-    "rollup-plugin-babel": "^4.3.3",
-    "rollup-plugin-commonjs": "^10.1.0",
-    "rollup-plugin-node-resolve": "^5.2.0",
-    "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-postcss": "^2.1.1",
-    "rollup-plugin-visualizer": "^3.3.1",
     "typescript": "^4.9.4",
     "webpack": "4.28.3"
   }

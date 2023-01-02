@@ -29,7 +29,7 @@ export default [
       external(),
       postcss({
         extensions: ['.css', '.scss'],
-        extract: 'dist/types/main.scss'
+        extract: 'types/style/main.scss'
       }),
       babel({
         exclude: 'node_modules/**'

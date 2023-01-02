@@ -58,8 +58,8 @@ const Paginator: FC<PaginatorProps> = (props: PaginatorProps) => {
   const firstRun = useRef(true);
 
   const gotoPage = useCallback(
-    (page: number) => {
-      const currentPage = Math.max(1, Math.min(page, state.totalPages));
+    (page: number | string) => {
+      const currentPage = Math.max(1, Math.min(page as number, state.totalPages));
       props.setCurrentPage(currentPage);
     },
     [state.totalPages, props.pageLimit]
@@ -83,7 +83,7 @@ const Paginator: FC<PaginatorProps> = (props: PaginatorProps) => {
     setState({ ...state, totalRecords: props.totalRecords, totalPages });
   }, [props.totalRecords]);
 
-  const handleClick = (page: number, evt: any) => {
+  const handleClick = (page: number | string, evt: any) => {
     evt.preventDefault();
     gotoPage(page);
   };

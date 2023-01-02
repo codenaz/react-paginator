@@ -1,5 +1,5 @@
 {
-  "name": "@kerosine9/react-hooks-paginator",
+  "name": "@camilomontoyau/react-hooks-paginator",
   "description": "A package for adding paginator functionality to react apps (typescript fork",
   "version": "0.6.0",
   "main": "dist/index.cjs.js",

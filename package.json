@@ -28,7 +28,8 @@
     "build": "del dist && rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prepublish": "npm run build"
+    "prepublish": "npm run build",
+    "tsc": "tsc"
   },
   "eslintConfig": {
     "extends": "react-app"

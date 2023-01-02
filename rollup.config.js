@@ -1,9 +1,11 @@
 import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import resolve from 'rollup-plugin-node-resolve';
+import resolve from '@rollup/plugin-node-resolve';
 import visualizer from 'rollup-plugin-visualizer';
+import typescript from '@rollup/plugin-typescript';
+import { terser } from '@rollup/plugin-terser';
 
 import pkg from './package.json';
 
@@ -12,11 +14,14 @@ export default {
   output: [
     {
       file: pkg.main,
-      format: 'cjs'
+      format: 'cjs',
+      sourcemap: true
+      // name: 'react-lib'
     },
     {
       file: pkg.module,
-      format: 'esm'
+      format: 'esm',
+      sourcemap: true
     }
   ],
   plugins: [
@@ -39,6 +44,8 @@ export default {
         ]
       }
     }),
-    visualizer()
+    visualizer(),
+    typescript({ tsconfig: './tsconfig.json' }),
+    terser()
   ]
-};
+}

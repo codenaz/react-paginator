@@ -20,8 +20,8 @@ const range = (from: number, to: number, step = 1) => {
 type PaginatorProps = {
   currentPage: number,
   pageActiveClass: string,
-  pageNextText: string | React.node,
-  pagePrevText: string | React.node,
+  pageNextText: string | React.ReactNode,
+  pagePrevText: string | React.ReactNode,
   pagePrevClass: string,
   pageNextClass: string,
   pageContainerClass: string,

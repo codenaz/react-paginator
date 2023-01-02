@@ -17,8 +17,8 @@ export default [
       {
         file: pkg.main,
         format: 'cjs',
-        sourcemap: true
-        // name: 'react-lib'
+        sourcemap: true,
+        name: 'react-hooks-paginator-ts'
       },
       {
         file: pkg.module,
@@ -28,33 +28,21 @@ export default [
     ],
     plugins: [
       external(),
-      postcss({
-        extensions: ['.css', '.scss']
-      }),
+      postcss(),
       babel({
         exclude: 'node_modules/**'
       }),
       resolve(),
-      commonjs({
-        namedExports: {
-          'node_modules/prop-types/index.js': [
-            'number',
-            'string',
-            'func',
-            'oneOfType',
-            'node'
-          ]
-        }
-      }),
+      commonjs(),
       visualizer(),
       typescript({ tsconfig: './tsconfig.json' }),
       terser()
     ]
   },
   {
-    input: 'dist/esm/types/index.d.ts',
-    output: [{ file: 'dist/index.d.ts', format: "esm" }],
-    external: [/\.css$/],
+    input: 'dist/types/index.d.ts',
+    output: [{ file: 'dist/index.d.ts', format: "es" }],
+    // external: [/\.css$/],
     plugins: [dts()],
   }
 ]

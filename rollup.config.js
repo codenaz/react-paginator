@@ -12,7 +12,7 @@ import pkg from './package.json' assert { type: "json" };
 
 export default [
   {
-    input: './src/lib/index.js',
+    input: './src/lib/index.ts',
     output: [
       {
         file: pkg.main,

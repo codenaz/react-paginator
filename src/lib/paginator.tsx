@@ -29,12 +29,12 @@ type PaginatorProps = {
   pageLimit: number,
   pageLinkClass: string,
   pageNeighbours: number,
-  setCurrentPage: func,
-  setOffset: func,
-  totalRecords: number.isRequired
+  setCurrentPage(args: any): any,
+  setOffset(args: any): any,
+  totalRecords: number
 }
 
-const Paginator: FC<PaginatorProps> = (props) => {
+const Paginator: FC<PaginatorProps> = (props: PaginatorProps) => {
   const init = () => {
     let { totalRecords = null, pageLimit = 20, pageNeighbours = 0 } = props;
     pageLimit = typeof pageLimit === 'number' ? pageLimit : 20;

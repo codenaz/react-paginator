@@ -1,11 +1,11 @@
-import React, { useState, useCallback, useEffect, useRef } from 'react';
-import { number, string, func, oneOfType, node } from 'prop-types';
+import React, { useState, useCallback, useEffect, useRef, FC } from 'react';
+// import { number, string, func, oneOfType, node } from 'prop-types';
 import './style/main.scss';
 
 const LEFT_PAGE = 'LEFT';
 const RIGHT_PAGE = 'RIGHT';
 
-const range = (from, to, step = 1) => {
+const range = (from: number, to: number, step = 1) => {
   let i = from;
   const pool = [];
 
@@ -17,7 +17,24 @@ const range = (from, to, step = 1) => {
   return pool;
 };
 
-function Paginator(props) {
+type PaginatorProps = {
+  currentPage: number,
+  pageActiveClass: string,
+  pageNextText: string | React.ReactNode,
+  pagePrevText: string | React.ReactNode,
+  pagePrevClass: string,
+  pageNextClass: string,
+  pageContainerClass: string,
+  pageItemClass: string,
+  pageLimit: number,
+  pageLinkClass: string,
+  pageNeighbours: number,
+  setCurrentPage(args: any): any,
+  setOffset(args: any): any,
+  totalRecords: number
+}
+
+const Paginator: FC<PaginatorProps> = (props: PaginatorProps) => {
   const init = () => {
     let { totalRecords = null, pageLimit = 20, pageNeighbours = 0 } = props;
     pageLimit = typeof pageLimit === 'number' ? pageLimit : 20;
@@ -41,8 +58,8 @@ function Paginator(props) {
   const firstRun = useRef(true);
 
   const gotoPage = useCallback(
-    page => {
-      const currentPage = Math.max(1, Math.min(page, state.totalPages));
+    (page: number | string) => {
+      const currentPage = Math.max(1, Math.min(page as number, state.totalPages));
       props.setCurrentPage(currentPage);
     },
     [state.totalPages, props.pageLimit]
@@ -66,13 +83,13 @@ function Paginator(props) {
     setState({ ...state, totalRecords: props.totalRecords, totalPages });
   }, [props.totalRecords]);
 
-  const handleClick = (page, evt) => {
+  const handleClick = (page: number | string, evt: any) => {
     evt.preventDefault();
     gotoPage(page);
   };
 
   const handleMoveLeft = useCallback(
-    evt => {
+    (evt: any) => {
       evt.preventDefault();
       gotoPage(props.currentPage - state.pageNeighbours * 2 - 1);
     },
@@ -80,7 +97,7 @@ function Paginator(props) {
   );
 
   const handleMoveRight = useCallback(
-    evt => {
+    (evt: any) => {
       evt.preventDefault();
       gotoPage(props.currentPage + state.pageNeighbours * 2 + 1);
     },
@@ -151,7 +168,7 @@ function Paginator(props) {
             </li>
           );
 
-        if (page === RIGHT_PAGE)
+        if (page === RIGHT_PAGE) {
           return (
             <li className={props.pageItemClass} key={index}>
               <button className={props.pageNextClass} onClick={handleMoveRight}>
@@ -159,7 +176,7 @@ function Paginator(props) {
               </button>
             </li>
           );
-
+        }
         return (
           <li
             className={`${props.pageItemClass} ${
@@ -191,6 +208,7 @@ Paginator.defaultProps = {
   pageNextClass: 'page-link'
 };
 
+/* 
 Paginator.propTypes = {
   currentPage: number,
   pageActiveClass: string,
@@ -208,4 +226,5 @@ Paginator.propTypes = {
   totalRecords: number.isRequired
 };
 
+ */
 export default Paginator;

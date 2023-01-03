@@ -1,44 +1,49 @@
-import babel from 'rollup-plugin-babel';
-import commonjs from 'rollup-plugin-commonjs';
+import babel from '@rollup/plugin-babel';
+import commonjs from '@rollup/plugin-commonjs';
 import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
-import resolve from 'rollup-plugin-node-resolve';
-import visualizer from 'rollup-plugin-visualizer';
+import resolve from '@rollup/plugin-node-resolve';
+import { visualizer } from 'rollup-plugin-visualizer';
+import typescript from '@rollup/plugin-typescript';
+import dts from 'rollup-plugin-dts';
 
-import pkg from './package.json';
+import pkg from './package.json' assert { type: "json" };
 
-export default {
-  input: './src/lib/index.js',
-  output: [
-    {
-      file: pkg.main,
-      format: 'cjs'
-    },
-    {
-      file: pkg.module,
-      format: 'esm'
-    }
-  ],
-  plugins: [
-    external(),
-    postcss({
-      extensions: ['.css', '.scss']
-    }),
-    babel({
-      exclude: 'node_modules/**'
-    }),
-    resolve(),
-    commonjs({
-      namedExports: {
-        'node_modules/prop-types/index.js': [
-          'number',
-          'string',
-          'func',
-          'oneOfType',
-          'node'
-        ]
+export default [
+  {
+    input: './src/lib/index.ts',
+    output: [
+      {
+        file: pkg.main,
+        format: 'cjs',
+        sourcemap: true,
+        name: 'react-hooks-paginator-ts'
+      },
+      {
+        file: pkg.module,
+        format: 'esm',
+        sourcemap: true
       }
-    }),
-    visualizer()
-  ]
-};
+    ],
+    plugins: [
+      external(),
+      postcss({
+        extensions: ['.css', '.scss'],
+        extract: 'types/style/main.scss'
+      }),
+      babel({
+        exclude: 'node_modules/**'
+      }),
+      resolve(),
+      commonjs(),
+      visualizer(),
+      typescript({ tsconfig: './tsconfig.json' })
+    ]
+  },
+  {
+    input: 'dist/types/index.d.ts',
+    output: [{ file: 'dist/index.d.ts', format: "es" }],
+    external: [/\.scss$/],
+    plugins: [dts()],
+  }
+]

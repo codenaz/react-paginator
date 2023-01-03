@@ -1,0 +1,26 @@
+.react-hooks-paginator {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+  margin: 1rem 0; }
+  .react-hooks-paginator .page-item {
+    list-style: none; }
+    .react-hooks-paginator .page-item:first-child .page-link {
+      margin-left: 0;
+      border-top-left-radius: 3px;
+      border-bottom-left-radius: 3px; }
+    .react-hooks-paginator .page-item:last-child .page-link {
+      border-top-right-radius: 3px;
+      border-bottom-right-radius: 3px; }
+    .react-hooks-paginator .page-item:hover .page-link, .react-hooks-paginator .page-item.active .page-link {
+      background-color: #3895d3;
+      border-color: #3895d3;
+      color: #fff; }
+  .react-hooks-paginator .page-link {
+    border: 1px solid #dee2e6;
+    color: #4a4a4a;
+    margin-left: -1px;
+    outline: none;
+    padding: 0.5rem 0.75rem;
+    text-decoration: none;
+    transition: all 0.2s; }

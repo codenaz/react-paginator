@@ -19,16 +19,16 @@ const range = (from: number, to: number, step = 1) => {
 
 type PaginatorProps = {
   currentPage: number,
-  pageActiveClass: string,
-  pageNextText: string | React.ReactNode,
-  pagePrevText: string | React.ReactNode,
-  pagePrevClass: string,
-  pageNextClass: string,
-  pageContainerClass: string,
-  pageItemClass: string,
+  pageActiveClass?: string,
+  pageNextText?: string | React.ReactNode,
+  pagePrevText?: string | React.ReactNode,
+  pagePrevClass?: string,
+  pageNextClass?: string,
+  pageContainerClass?: string,
+  pageItemClass?: string,
   pageLimit: number,
-  pageLinkClass: string,
-  pageNeighbours: number,
+  pageLinkClass?: string,
+  pageNeighbours?: number,
   setCurrentPage(args: any): any,
   setOffset(args: any): any,
   totalRecords: number
@@ -208,23 +208,4 @@ Paginator.defaultProps = {
   pageNextClass: 'page-link'
 };
 
-/* 
-Paginator.propTypes = {
-  currentPage: number,
-  pageActiveClass: string,
-  pageNextText: oneOfType([string, node]),
-  pagePrevText: oneOfType([string, node]),
-  pagePrevClass: string,
-  pageNextClass: string,
-  pageContainerClass: string,
-  pageItemClass: string,
-  pageLimit: number,
-  pageLinkClass: string,
-  pageNeighbours: number,
-  setCurrentPage: func,
-  setOffset: func,
-  totalRecords: number.isRequired
-};
-
- */
 export default Paginator;

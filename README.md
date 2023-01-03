@@ -1,6 +1,6 @@
 # React Hooks Paginator
 
-[![Build Status](https://travis-ci.org/codenaz/react-paginator.svg?branch=master)](https://travis-ci.org/codenaz/react-paginator)
+TYPESCRIPT FORK FROM https://www.npmjs.com/package/react-hooks-paginator
 
 ![demo](https://s5.gifyu.com/images/animate.gif)
 

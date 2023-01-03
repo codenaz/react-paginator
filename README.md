@@ -2,16 +2,14 @@
 
 TYPESCRIPT FORK FROM https://www.npmjs.com/package/react-hooks-paginator
 
-![demo](https://s5.gifyu.com/images/animate.gif)
-
 A library for adding simple paginator functionality to your react app.
 
-Requires react >= 16.8.0
+Requires react >= 18.2.0
 
 ## Installation
 
 Run the following command:
-`npm install react-hooks-paginator`
+`npm install @camilomontoyau/react-hooks-paginator`
 
 ## Usage
 

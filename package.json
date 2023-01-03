@@ -1,7 +1,7 @@
 {
   "name": "@camilomontoyau/react-hooks-paginator",
   "description": "A package for adding paginator functionality to react apps (typescript fork",
-  "version": "0.7.1",
+  "version": "0.7.2",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
   "files": [

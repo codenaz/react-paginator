@@ -1,0 +1,27 @@
+name: Create release
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  create-release:
+    runs-on: ubuntu-20.04
+    outputs:
+      release_created: ${{ steps.release.outputs.release_created }}
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release
+        with:
+          release-type: node
+          package-name: react-hooks-paginator
+          default-branch: master
+          changelog-path: CHANGELOG.md
+  
+  deploy:
+    uses: ./.github/workflows/publish.yaml
+    needs: create-release
+    if: ${{ needs.create-release.outputs.release_created }}
+    secrets:
+      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}

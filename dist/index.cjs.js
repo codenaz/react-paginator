@@ -5,7 +5,56 @@ function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'defau
 var React = require('react');
 var React__default = _interopDefault(React);
 
+function _iterableToArrayLimit(arr, i) {
+  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
+  if (null != _i) {
+    var _s,
+      _e,
+      _x,
+      _r,
+      _arr = [],
+      _n = !0,
+      _d = !1;
+    try {
+      if (_x = (_i = _i.call(arr)).next, 0 === i) {
+        if (Object(_i) !== _i) return;
+        _n = !1;
+      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
+    } catch (err) {
+      _d = !0, _e = err;
+    } finally {
+      try {
+        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
+      } finally {
+        if (_d) throw _e;
+      }
+    }
+    return _arr;
+  }
+}
+function ownKeys(object, enumerableOnly) {
+  var keys = Object.keys(object);
+  if (Object.getOwnPropertySymbols) {
+    var symbols = Object.getOwnPropertySymbols(object);
+    enumerableOnly && (symbols = symbols.filter(function (sym) {
+      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
+    })), keys.push.apply(keys, symbols);
+  }
+  return keys;
+}
+function _objectSpread2(target) {
+  for (var i = 1; i < arguments.length; i++) {
+    var source = null != arguments[i] ? arguments[i] : {};
+    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
+      _defineProperty(target, key, source[key]);
+    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
+      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
+    });
+  }
+  return target;
+}
 function _defineProperty(obj, key, value) {
+  key = _toPropertyKey(key);
   if (key in obj) {
     Object.defineProperty(obj, key, {
       value: value,
@@ -16,152 +65,106 @@ function _defineProperty(obj, key, value) {
   } else {
     obj[key] = value;
   }
-
   return obj;
 }
-
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    if (enumerableOnly) symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    });
-    keys.push.apply(keys, symbols);
-  }
-
-  return keys;
-}
-
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = arguments[i] != null ? arguments[i] : {};
-
-    if (i % 2) {
-      ownKeys(source, true).forEach(function (key) {
-        _defineProperty(target, key, source[key]);
-      });
-    } else if (Object.getOwnPropertyDescriptors) {
-      Object.defineProperties(target, Object.getOwnPropertyDescriptors(source));
-    } else {
-      ownKeys(source).forEach(function (key) {
-        Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-      });
-    }
-  }
-
-  return target;
-}
-
 function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest();
+  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
 }
-
 function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _nonIterableSpread();
+  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
 }
-
 function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) {
-    for (var i = 0, arr2 = new Array(arr.length); i < arr.length; i++) arr2[i] = arr[i];
-
-    return arr2;
-  }
+  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
 }
-
 function _arrayWithHoles(arr) {
   if (Array.isArray(arr)) return arr;
 }
-
 function _iterableToArray(iter) {
-  if (Symbol.iterator in Object(iter) || Object.prototype.toString.call(iter) === "[object Arguments]") return Array.from(iter);
+  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
 }
-
-function _iterableToArrayLimit(arr, i) {
-  if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) {
-    return;
-  }
-
-  var _arr = [];
-  var _n = true;
-  var _d = false;
-  var _e = undefined;
-
-  try {
-    for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) {
-      _arr.push(_s.value);
-
-      if (i && _arr.length === i) break;
-    }
-  } catch (err) {
-    _d = true;
-    _e = err;
-  } finally {
-    try {
-      if (!_n && _i["return"] != null) _i["return"]();
-    } finally {
-      if (_d) throw _e;
-    }
-  }
-
-  return _arr;
+function _unsupportedIterableToArray(o, minLen) {
+  if (!o) return;
+  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
+  var n = Object.prototype.toString.call(o).slice(8, -1);
+  if (n === "Object" && o.constructor) n = o.constructor.name;
+  if (n === "Map" || n === "Set") return Array.from(o);
+  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
 }
-
+function _arrayLikeToArray(arr, len) {
+  if (len == null || len > arr.length) len = arr.length;
+  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
+  return arr2;
+}
 function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance");
+  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-
 function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance");
+  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
 }
-
-function unwrapExports (x) {
-	return x && x.__esModule && Object.prototype.hasOwnProperty.call(x, 'default') ? x['default'] : x;
+function _toPrimitive(input, hint) {
+  if (typeof input !== "object" || input === null) return input;
+  var prim = input[Symbol.toPrimitive];
+  if (prim !== undefined) {
+    var res = prim.call(input, hint || "default");
+    if (typeof res !== "object") return res;
+    throw new TypeError("@@toPrimitive must return a primitive value.");
+  }
+  return (hint === "string" ? String : Number)(input);
+}
+function _toPropertyKey(arg) {
+  var key = _toPrimitive(arg, "string");
+  return typeof key === "symbol" ? key : String(key);
 }
 
 function createCommonjsModule(fn, module) {
 	return module = { exports: {} }, fn(module, module.exports), module.exports;
 }
 
-var reactIs_production_min = createCommonjsModule(function (module, exports) {
-Object.defineProperty(exports,"__esModule",{value:!0});
-var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?Symbol.for("react.suspense_list"):
-60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.fundamental"):60117,w=b?Symbol.for("react.responder"):60118,x=b?Symbol.for("react.scope"):60119;function y(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case h:return a;default:return u}}case t:case r:case d:return u}}}function z(a){return y(a)===m}
-exports.typeOf=y;exports.AsyncMode=l;exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exports.Element=c;exports.ForwardRef=n;exports.Fragment=e;exports.Lazy=t;exports.Memo=r;exports.Portal=d;exports.Profiler=g;exports.StrictMode=f;exports.Suspense=p;
-exports.isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w||a.$$typeof===x)};exports.isAsyncMode=function(a){return z(a)||y(a)===l};exports.isConcurrentMode=z;exports.isContextConsumer=function(a){return y(a)===k};exports.isContextProvider=function(a){return y(a)===h};
-exports.isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return y(a)===n};exports.isFragment=function(a){return y(a)===e};exports.isLazy=function(a){return y(a)===t};exports.isMemo=function(a){return y(a)===r};exports.isPortal=function(a){return y(a)===d};exports.isProfiler=function(a){return y(a)===g};exports.isStrictMode=function(a){return y(a)===f};exports.isSuspense=function(a){return y(a)===p};
-});
+/** @license React v16.13.1
+ * react-is.production.min.js
+ *
+ * Copyright (c) Facebook, Inc. and its affiliates.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+var b="function"===typeof Symbol&&Symbol.for,c=b?Symbol.for("react.element"):60103,d=b?Symbol.for("react.portal"):60106,e=b?Symbol.for("react.fragment"):60107,f=b?Symbol.for("react.strict_mode"):60108,g=b?Symbol.for("react.profiler"):60114,h=b?Symbol.for("react.provider"):60109,k=b?Symbol.for("react.context"):60110,l=b?Symbol.for("react.async_mode"):60111,m=b?Symbol.for("react.concurrent_mode"):60111,n=b?Symbol.for("react.forward_ref"):60112,p=b?Symbol.for("react.suspense"):60113,q=b?
+Symbol.for("react.suspense_list"):60120,r=b?Symbol.for("react.memo"):60115,t=b?Symbol.for("react.lazy"):60116,v=b?Symbol.for("react.block"):60121,w=b?Symbol.for("react.fundamental"):60117,x=b?Symbol.for("react.responder"):60118,y=b?Symbol.for("react.scope"):60119;
+function z(a){if("object"===typeof a&&null!==a){var u=a.$$typeof;switch(u){case c:switch(a=a.type,a){case l:case m:case e:case g:case f:case p:return a;default:switch(a=a&&a.$$typeof,a){case k:case n:case t:case r:case h:return a;default:return u}}case d:return u}}}function A(a){return z(a)===m}var AsyncMode=l;var ConcurrentMode=m;var ContextConsumer=k;var ContextProvider=h;var Element=c;var ForwardRef=n;var Fragment=e;var Lazy=t;var Memo=r;var Portal=d;
+var Profiler=g;var StrictMode=f;var Suspense=p;var isAsyncMode=function(a){return A(a)||z(a)===l};var isConcurrentMode=A;var isContextConsumer=function(a){return z(a)===k};var isContextProvider=function(a){return z(a)===h};var isElement=function(a){return "object"===typeof a&&null!==a&&a.$$typeof===c};var isForwardRef=function(a){return z(a)===n};var isFragment=function(a){return z(a)===e};var isLazy=function(a){return z(a)===t};
+var isMemo=function(a){return z(a)===r};var isPortal=function(a){return z(a)===d};var isProfiler=function(a){return z(a)===g};var isStrictMode=function(a){return z(a)===f};var isSuspense=function(a){return z(a)===p};
+var isValidElementType=function(a){return "string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===w||a.$$typeof===x||a.$$typeof===y||a.$$typeof===v)};var typeOf=z;
 
-unwrapExports(reactIs_production_min);
-var reactIs_production_min_1 = reactIs_production_min.typeOf;
-var reactIs_production_min_2 = reactIs_production_min.AsyncMode;
-var reactIs_production_min_3 = reactIs_production_min.ConcurrentMode;
-var reactIs_production_min_4 = reactIs_production_min.ContextConsumer;
-var reactIs_production_min_5 = reactIs_production_min.ContextProvider;
-var reactIs_production_min_6 = reactIs_production_min.Element;
-var reactIs_production_min_7 = reactIs_production_min.ForwardRef;
-var reactIs_production_min_8 = reactIs_production_min.Fragment;
-var reactIs_production_min_9 = reactIs_production_min.Lazy;
-var reactIs_production_min_10 = reactIs_production_min.Memo;
-var reactIs_production_min_11 = reactIs_production_min.Portal;
-var reactIs_production_min_12 = reactIs_production_min.Profiler;
-var reactIs_production_min_13 = reactIs_production_min.StrictMode;
-var reactIs_production_min_14 = reactIs_production_min.Suspense;
-var reactIs_production_min_15 = reactIs_production_min.isValidElementType;
-var reactIs_production_min_16 = reactIs_production_min.isAsyncMode;
-var reactIs_production_min_17 = reactIs_production_min.isConcurrentMode;
-var reactIs_production_min_18 = reactIs_production_min.isContextConsumer;
-var reactIs_production_min_19 = reactIs_production_min.isContextProvider;
-var reactIs_production_min_20 = reactIs_production_min.isElement;
-var reactIs_production_min_21 = reactIs_production_min.isForwardRef;
-var reactIs_production_min_22 = reactIs_production_min.isFragment;
-var reactIs_production_min_23 = reactIs_production_min.isLazy;
-var reactIs_production_min_24 = reactIs_production_min.isMemo;
-var reactIs_production_min_25 = reactIs_production_min.isPortal;
-var reactIs_production_min_26 = reactIs_production_min.isProfiler;
-var reactIs_production_min_27 = reactIs_production_min.isStrictMode;
-var reactIs_production_min_28 = reactIs_production_min.isSuspense;
+var reactIs_production_min = {
+	AsyncMode: AsyncMode,
+	ConcurrentMode: ConcurrentMode,
+	ContextConsumer: ContextConsumer,
+	ContextProvider: ContextProvider,
+	Element: Element,
+	ForwardRef: ForwardRef,
+	Fragment: Fragment,
+	Lazy: Lazy,
+	Memo: Memo,
+	Portal: Portal,
+	Profiler: Profiler,
+	StrictMode: StrictMode,
+	Suspense: Suspense,
+	isAsyncMode: isAsyncMode,
+	isConcurrentMode: isConcurrentMode,
+	isContextConsumer: isContextConsumer,
+	isContextProvider: isContextProvider,
+	isElement: isElement,
+	isForwardRef: isForwardRef,
+	isFragment: isFragment,
+	isLazy: isLazy,
+	isMemo: isMemo,
+	isPortal: isPortal,
+	isProfiler: isProfiler,
+	isStrictMode: isStrictMode,
+	isSuspense: isSuspense,
+	isValidElementType: isValidElementType,
+	typeOf: typeOf
+};
 
 var reactIs_development = createCommonjsModule(function (module, exports) {
 
@@ -169,8 +172,6 @@ var reactIs_development = createCommonjsModule(function (module, exports) {
 
 if (process.env.NODE_ENV !== "production") {
   (function() {
-
-Object.defineProperty(exports, '__esModule', { value: true });
 
 // The Symbol used to tag the ReactElement-like types. If there is no native Symbol
 // nor polyfill, then a plain number is used for performance.
@@ -191,69 +192,15 @@ var REACT_SUSPENSE_TYPE = hasSymbol ? Symbol.for('react.suspense') : 0xead1;
 var REACT_SUSPENSE_LIST_TYPE = hasSymbol ? Symbol.for('react.suspense_list') : 0xead8;
 var REACT_MEMO_TYPE = hasSymbol ? Symbol.for('react.memo') : 0xead3;
 var REACT_LAZY_TYPE = hasSymbol ? Symbol.for('react.lazy') : 0xead4;
+var REACT_BLOCK_TYPE = hasSymbol ? Symbol.for('react.block') : 0xead9;
 var REACT_FUNDAMENTAL_TYPE = hasSymbol ? Symbol.for('react.fundamental') : 0xead5;
 var REACT_RESPONDER_TYPE = hasSymbol ? Symbol.for('react.responder') : 0xead6;
 var REACT_SCOPE_TYPE = hasSymbol ? Symbol.for('react.scope') : 0xead7;
 
 function isValidElementType(type) {
   return typeof type === 'string' || typeof type === 'function' || // Note: its typeof might be other than 'symbol' or 'number' if it's a polyfill.
-  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE);
+  type === REACT_FRAGMENT_TYPE || type === REACT_CONCURRENT_MODE_TYPE || type === REACT_PROFILER_TYPE || type === REACT_STRICT_MODE_TYPE || type === REACT_SUSPENSE_TYPE || type === REACT_SUSPENSE_LIST_TYPE || typeof type === 'object' && type !== null && (type.$$typeof === REACT_LAZY_TYPE || type.$$typeof === REACT_MEMO_TYPE || type.$$typeof === REACT_PROVIDER_TYPE || type.$$typeof === REACT_CONTEXT_TYPE || type.$$typeof === REACT_FORWARD_REF_TYPE || type.$$typeof === REACT_FUNDAMENTAL_TYPE || type.$$typeof === REACT_RESPONDER_TYPE || type.$$typeof === REACT_SCOPE_TYPE || type.$$typeof === REACT_BLOCK_TYPE);
 }
-
-/**
- * Forked from fbjs/warning:
- * https://github.com/facebook/fbjs/blob/e66ba20ad5be433eb54423f2b097d829324d9de6/packages/fbjs/src/__forks__/warning.js
- *
- * Only change is we use console.warn instead of console.error,
- * and do nothing when 'console' is not supported.
- * This really simplifies the code.
- * ---
- * Similar to invariant but only logs a warning if the condition is not met.
- * This can be used to log issues in development environments in critical
- * paths. Removing the logging code for production environments will keep the
- * same logic and follow the same code paths.
- */
-var lowPriorityWarningWithoutStack = function () {};
-
-{
-  var printWarning = function (format) {
-    for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
-      args[_key - 1] = arguments[_key];
-    }
-
-    var argIndex = 0;
-    var message = 'Warning: ' + format.replace(/%s/g, function () {
-      return args[argIndex++];
-    });
-
-    if (typeof console !== 'undefined') {
-      console.warn(message);
-    }
-
-    try {
-      // --- Welcome to debugging React ---
-      // This error was thrown as a convenience so that you can use this stack
-      // to find the callsite that caused this warning to fire.
-      throw new Error(message);
-    } catch (x) {}
-  };
-
-  lowPriorityWarningWithoutStack = function (condition, format) {
-    if (format === undefined) {
-      throw new Error('`lowPriorityWarningWithoutStack(condition, format, ...args)` requires a warning ' + 'message argument');
-    }
-
-    if (!condition) {
-      for (var _len2 = arguments.length, args = new Array(_len2 > 2 ? _len2 - 2 : 0), _key2 = 2; _key2 < _len2; _key2++) {
-        args[_key2 - 2] = arguments[_key2];
-      }
-
-      printWarning.apply(void 0, [format].concat(args));
-    }
-  };
-}
-
-var lowPriorityWarningWithoutStack$1 = lowPriorityWarningWithoutStack;
 
 function typeOf(object) {
   if (typeof object === 'object' && object !== null) {
@@ -278,6 +225,8 @@ function typeOf(object) {
             switch ($$typeofType) {
               case REACT_CONTEXT_TYPE:
               case REACT_FORWARD_REF_TYPE:
+              case REACT_LAZY_TYPE:
+              case REACT_MEMO_TYPE:
               case REACT_PROVIDER_TYPE:
                 return $$typeofType;
 
@@ -287,8 +236,6 @@ function typeOf(object) {
 
         }
 
-      case REACT_LAZY_TYPE:
-      case REACT_MEMO_TYPE:
       case REACT_PORTAL_TYPE:
         return $$typeof;
     }
@@ -315,8 +262,9 @@ var hasWarnedAboutDeprecatedIsAsyncMode = false; // AsyncMode should be deprecat
 function isAsyncMode(object) {
   {
     if (!hasWarnedAboutDeprecatedIsAsyncMode) {
-      hasWarnedAboutDeprecatedIsAsyncMode = true;
-      lowPriorityWarningWithoutStack$1(false, 'The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
+      hasWarnedAboutDeprecatedIsAsyncMode = true; // Using console['warn'] to evade Babel and ESLint
+
+      console['warn']('The ReactIs.isAsyncMode() alias has been deprecated, ' + 'and will be removed in React 17+. Update your code to use ' + 'ReactIs.isConcurrentMode() instead. It has the exact same API.');
     }
   }
 
@@ -359,7 +307,6 @@ function isSuspense(object) {
   return typeOf(object) === REACT_SUSPENSE_TYPE;
 }
 
-exports.typeOf = typeOf;
 exports.AsyncMode = AsyncMode;
 exports.ConcurrentMode = ConcurrentMode;
 exports.ContextConsumer = ContextConsumer;
@@ -373,7 +320,6 @@ exports.Portal = Portal;
 exports.Profiler = Profiler;
 exports.StrictMode = StrictMode;
 exports.Suspense = Suspense;
-exports.isValidElementType = isValidElementType;
 exports.isAsyncMode = isAsyncMode;
 exports.isConcurrentMode = isConcurrentMode;
 exports.isContextConsumer = isContextConsumer;
@@ -387,39 +333,39 @@ exports.isPortal = isPortal;
 exports.isProfiler = isProfiler;
 exports.isStrictMode = isStrictMode;
 exports.isSuspense = isSuspense;
+exports.isValidElementType = isValidElementType;
+exports.typeOf = typeOf;
   })();
 }
 });
-
-unwrapExports(reactIs_development);
-var reactIs_development_1 = reactIs_development.typeOf;
-var reactIs_development_2 = reactIs_development.AsyncMode;
-var reactIs_development_3 = reactIs_development.ConcurrentMode;
-var reactIs_development_4 = reactIs_development.ContextConsumer;
-var reactIs_development_5 = reactIs_development.ContextProvider;
-var reactIs_development_6 = reactIs_development.Element;
-var reactIs_development_7 = reactIs_development.ForwardRef;
-var reactIs_development_8 = reactIs_development.Fragment;
-var reactIs_development_9 = reactIs_development.Lazy;
-var reactIs_development_10 = reactIs_development.Memo;
-var reactIs_development_11 = reactIs_development.Portal;
-var reactIs_development_12 = reactIs_development.Profiler;
-var reactIs_development_13 = reactIs_development.StrictMode;
-var reactIs_development_14 = reactIs_development.Suspense;
-var reactIs_development_15 = reactIs_development.isValidElementType;
-var reactIs_development_16 = reactIs_development.isAsyncMode;
-var reactIs_development_17 = reactIs_development.isConcurrentMode;
-var reactIs_development_18 = reactIs_development.isContextConsumer;
-var reactIs_development_19 = reactIs_development.isContextProvider;
-var reactIs_development_20 = reactIs_development.isElement;
-var reactIs_development_21 = reactIs_development.isForwardRef;
-var reactIs_development_22 = reactIs_development.isFragment;
-var reactIs_development_23 = reactIs_development.isLazy;
-var reactIs_development_24 = reactIs_development.isMemo;
-var reactIs_development_25 = reactIs_development.isPortal;
-var reactIs_development_26 = reactIs_development.isProfiler;
-var reactIs_development_27 = reactIs_development.isStrictMode;
-var reactIs_development_28 = reactIs_development.isSuspense;
+var reactIs_development_1 = reactIs_development.AsyncMode;
+var reactIs_development_2 = reactIs_development.ConcurrentMode;
+var reactIs_development_3 = reactIs_development.ContextConsumer;
+var reactIs_development_4 = reactIs_development.ContextProvider;
+var reactIs_development_5 = reactIs_development.Element;
+var reactIs_development_6 = reactIs_development.ForwardRef;
+var reactIs_development_7 = reactIs_development.Fragment;
+var reactIs_development_8 = reactIs_development.Lazy;
+var reactIs_development_9 = reactIs_development.Memo;
+var reactIs_development_10 = reactIs_development.Portal;
+var reactIs_development_11 = reactIs_development.Profiler;
+var reactIs_development_12 = reactIs_development.StrictMode;
+var reactIs_development_13 = reactIs_development.Suspense;
+var reactIs_development_14 = reactIs_development.isAsyncMode;
+var reactIs_development_15 = reactIs_development.isConcurrentMode;
+var reactIs_development_16 = reactIs_development.isContextConsumer;
+var reactIs_development_17 = reactIs_development.isContextProvider;
+var reactIs_development_18 = reactIs_development.isElement;
+var reactIs_development_19 = reactIs_development.isForwardRef;
+var reactIs_development_20 = reactIs_development.isFragment;
+var reactIs_development_21 = reactIs_development.isLazy;
+var reactIs_development_22 = reactIs_development.isMemo;
+var reactIs_development_23 = reactIs_development.isPortal;
+var reactIs_development_24 = reactIs_development.isProfiler;
+var reactIs_development_25 = reactIs_development.isStrictMode;
+var reactIs_development_26 = reactIs_development.isSuspense;
+var reactIs_development_27 = reactIs_development.isValidElementType;
+var reactIs_development_28 = reactIs_development.typeOf;
 
 var reactIs = createCommonjsModule(function (module) {
 
@@ -530,12 +476,14 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 var ReactPropTypesSecret_1 = ReactPropTypesSecret;
 
+var has = Function.call.bind(Object.prototype.hasOwnProperty);
+
 var printWarning = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
   var ReactPropTypesSecret$1 = ReactPropTypesSecret_1;
   var loggedTypeFailures = {};
-  var has = Function.call.bind(Object.prototype.hasOwnProperty);
+  var has$1 = has;
 
   printWarning = function(text) {
     var message = 'Warning: ' + text;
@@ -547,7 +495,7 @@ if (process.env.NODE_ENV !== 'production') {
       // This error was thrown as a convenience so that you can use this stack
       // to find the callsite that caused this warning to fire.
       throw new Error(message);
-    } catch (x) {}
+    } catch (x) { /**/ }
   };
 }
 
@@ -565,7 +513,7 @@ if (process.env.NODE_ENV !== 'production') {
 function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
   if (process.env.NODE_ENV !== 'production') {
     for (var typeSpecName in typeSpecs) {
-      if (has(typeSpecs, typeSpecName)) {
+      if (has$1(typeSpecs, typeSpecName)) {
         var error;
         // Prop type validation may throw. In case they do, we don't want to
         // fail the render phase where it didn't fail before. So we log it.
@@ -576,7 +524,8 @@ function checkPropTypes(typeSpecs, values, location, componentName, getStack) {
           if (typeof typeSpecs[typeSpecName] !== 'function') {
             var err = Error(
               (componentName || 'React class') + ': ' + location + ' type `' + typeSpecName + '` is invalid; ' +
-              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.'
+              'it must be a function, usually from the `prop-types` package, but received `' + typeof typeSpecs[typeSpecName] + '`.' +
+              'This often happens because of typos such as `PropTypes.function` instead of `PropTypes.func`.'
             );
             err.name = 'Invariant Violation';
             throw err;
@@ -624,7 +573,6 @@ checkPropTypes.resetWarningCache = function() {
 
 var checkPropTypes_1 = checkPropTypes;
 
-var has$1 = Function.call.bind(Object.prototype.hasOwnProperty);
 var printWarning$1 = function() {};
 
 if (process.env.NODE_ENV !== 'production') {
@@ -725,6 +673,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
   // Keep this list in sync with production version in `./factoryWithThrowingShims.js`.
   var ReactPropTypes = {
     array: createPrimitiveTypeChecker('array'),
+    bigint: createPrimitiveTypeChecker('bigint'),
     bool: createPrimitiveTypeChecker('boolean'),
     func: createPrimitiveTypeChecker('function'),
     number: createPrimitiveTypeChecker('number'),
@@ -770,8 +719,9 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
    * is prohibitively expensive if they are created too often, such as what
    * happens in oneOfType() for any type before the one that matched.
    */
-  function PropTypeError(message) {
+  function PropTypeError(message, data) {
     this.message = message;
+    this.data = data && typeof data === 'object' ? data: {};
     this.stack = '';
   }
   // Make `instanceof Error` still work for returned errors.
@@ -806,7 +756,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
           ) {
             printWarning$1(
               'You are manually calling a React.PropTypes validation ' +
-              'function for the `' + propFullName + '` prop on `' + componentName  + '`. This is deprecated ' +
+              'function for the `' + propFullName + '` prop on `' + componentName + '`. This is deprecated ' +
               'and will throw in the standalone `prop-types` package. ' +
               'You may be seeing this warning due to a third-party PropTypes ' +
               'library. See https://fb.me/react-warning-dont-call-proptypes ' + 'for details.'
@@ -845,7 +795,10 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         // 'of type `object`'.
         var preciseType = getPreciseType(propValue);
 
-        return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'));
+        return new PropTypeError(
+          'Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + preciseType + '` supplied to `' + componentName + '`, expected ') + ('`' + expectedType + '`.'),
+          {expectedType: expectedType}
+        );
       }
       return null;
     }
@@ -959,7 +912,7 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type ' + ('`' + propType + '` supplied to `' + componentName + '`, expected an object.'));
       }
       for (var key in propValue) {
-        if (has$1(propValue, key)) {
+        if (has(propValue, key)) {
           var error = typeChecker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
           if (error instanceof Error) {
             return error;
@@ -989,14 +942,19 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     }
 
     function validate(props, propName, componentName, location, propFullName) {
+      var expectedTypes = [];
       for (var i = 0; i < arrayOfTypeCheckers.length; i++) {
         var checker = arrayOfTypeCheckers[i];
-        if (checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1) == null) {
+        var checkerResult = checker(props, propName, componentName, location, propFullName, ReactPropTypesSecret_1);
+        if (checkerResult == null) {
           return null;
         }
+        if (checkerResult.data && has(checkerResult.data, 'expectedType')) {
+          expectedTypes.push(checkerResult.data.expectedType);
+        }
       }
-
-      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`.'));
+      var expectedTypesMessage = (expectedTypes.length > 0) ? ', expected one of type [' + expectedTypes.join(', ') + ']': '';
+      return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` supplied to ' + ('`' + componentName + '`' + expectedTypesMessage + '.'));
     }
     return createChainableTypeChecker(validate);
   }
@@ -1011,6 +969,13 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
     return createChainableTypeChecker(validate);
   }
 
+  function invalidValidatorError(componentName, location, propFullName, key, type) {
+    return new PropTypeError(
+      (componentName || 'React class') + ': ' + location + ' type `' + propFullName + '.' + key + '` is invalid; ' +
+      'it must be a function, usually from the `prop-types` package, but received `' + type + '`.'
+    );
+  }
+
   function createShapeTypeChecker(shapeTypes) {
     function validate(props, propName, componentName, location, propFullName) {
       var propValue = props[propName];
@@ -1020,8 +985,8 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       }
       for (var key in shapeTypes) {
         var checker = shapeTypes[key];
-        if (!checker) {
-          continue;
+        if (typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
         }
         var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
         if (error) {
@@ -1040,16 +1005,18 @@ var factoryWithTypeCheckers = function(isValidElement, throwOnDirectAccess) {
       if (propType !== 'object') {
         return new PropTypeError('Invalid ' + location + ' `' + propFullName + '` of type `' + propType + '` ' + ('supplied to `' + componentName + '`, expected `object`.'));
       }
-      // We need to check all keys in case some are required but missing from
-      // props.
+      // We need to check all keys in case some are required but missing from props.
       var allKeys = objectAssign({}, props[propName], shapeTypes);
       for (var key in allKeys) {
         var checker = shapeTypes[key];
+        if (has(shapeTypes, key) && typeof checker !== 'function') {
+          return invalidValidatorError(componentName, location, propFullName, key, getPreciseType(checker));
+        }
         if (!checker) {
           return new PropTypeError(
             'Invalid ' + location + ' `' + propFullName + '` key `' + key + '` supplied to `' + componentName + '`.' +
             '\nBad object: ' + JSON.stringify(props[propName], null, '  ') +
-            '\nValid keys: ' +  JSON.stringify(Object.keys(shapeTypes), null, '  ')
+            '\nValid keys: ' + JSON.stringify(Object.keys(shapeTypes), null, '  ')
           );
         }
         var error = checker(propValue, key, componentName, location, propFullName + '.' + key, ReactPropTypesSecret_1);
@@ -1225,6 +1192,7 @@ var factoryWithThrowingShims = function() {
   // Keep this list in sync with production version in `./factoryWithTypeCheckers.js`.
   var ReactPropTypes = {
     array: shim,
+    bigint: shim,
     bool: shim,
     func: shim,
     number: shim,
@@ -1307,33 +1275,29 @@ function styleInject(css, ref) {
   }
 }
 
-var css = ".react-hooks-paginator {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  margin: 1rem 0; }\n  .react-hooks-paginator .page-item {\n    list-style: none; }\n    .react-hooks-paginator .page-item:first-child .page-link {\n      margin-left: 0;\n      border-top-left-radius: 3px;\n      border-bottom-left-radius: 3px; }\n    .react-hooks-paginator .page-item:last-child .page-link {\n      border-top-right-radius: 3px;\n      border-bottom-right-radius: 3px; }\n    .react-hooks-paginator .page-item:hover .page-link, .react-hooks-paginator .page-item.active .page-link {\n      background-color: #3895d3;\n      border-color: #3895d3;\n      color: #fff; }\n  .react-hooks-paginator .page-link {\n    border: 1px solid #dee2e6;\n    color: #4a4a4a;\n    margin-left: -1px;\n    outline: none;\n    padding: 0.5rem 0.75rem;\n    text-decoration: none;\n    transition: all 0.2s; }\n";
-styleInject(css);
+var css_248z = ".react-hooks-paginator {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  margin: 1rem 0; }\n  .react-hooks-paginator .page-item {\n    list-style: none; }\n    .react-hooks-paginator .page-item:first-child .page-link {\n      margin-left: 0;\n      border-top-left-radius: 3px;\n      border-bottom-left-radius: 3px; }\n    .react-hooks-paginator .page-item:last-child .page-link {\n      border-top-right-radius: 3px;\n      border-bottom-right-radius: 3px; }\n    .react-hooks-paginator .page-item:hover .page-link, .react-hooks-paginator .page-item.active .page-link {\n      background-color: #3895d3;\n      border-color: #3895d3;\n      color: #fff; }\n  .react-hooks-paginator .page-link {\n    border: 1px solid #dee2e6;\n    color: #4a4a4a;\n    margin-left: -1px;\n    outline: none;\n    padding: 0.5rem 0.75rem;\n    text-decoration: none;\n    transition: all 0.2s; }\n";
+styleInject(css_248z);
 
 var LEFT_PAGE = 'LEFT';
 var RIGHT_PAGE = 'RIGHT';
-
 var range = function range(from, to) {
   var step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
   var i = from;
   var pool = [];
-
   while (i <= to) {
     pool.push(i);
     i += step;
   }
-
   return pool;
 };
-
 function Paginator(props) {
   var init = function init() {
     var _props$totalRecords = props.totalRecords,
-        totalRecords = _props$totalRecords === void 0 ? null : _props$totalRecords,
-        _props$pageLimit = props.pageLimit,
-        pageLimit = _props$pageLimit === void 0 ? 20 : _props$pageLimit,
-        _props$pageNeighbours = props.pageNeighbours,
-        pageNeighbours = _props$pageNeighbours === void 0 ? 0 : _props$pageNeighbours;
+      totalRecords = _props$totalRecords === void 0 ? null : _props$totalRecords,
+      _props$pageLimit = props.pageLimit,
+      pageLimit = _props$pageLimit === void 0 ? 20 : _props$pageLimit,
+      _props$pageNeighbours = props.pageNeighbours,
+      pageNeighbours = _props$pageNeighbours === void 0 ? 0 : _props$pageNeighbours;
     pageLimit = typeof pageLimit === 'number' ? pageLimit : 20;
     totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
     pageNeighbours = typeof pageNeighbours === 'number' ? Math.max(0, Math.min(pageNeighbours, 2)) : 0;
@@ -1345,14 +1309,12 @@ function Paginator(props) {
       totalPages: totalPages
     };
   };
-
   var _useState = React.useState(function () {
-    return init();
-  }),
-      _useState2 = _slicedToArray(_useState, 2),
-      state = _useState2[0],
-      setState = _useState2[1];
-
+      return init();
+    }),
+    _useState2 = _slicedToArray(_useState, 2),
+    state = _useState2[0],
+    setState = _useState2[1];
   var firstRun = React.useRef(true);
   var gotoPage = React.useCallback(function (page) {
     var currentPage = Math.max(1, Math.min(page, state.totalPages));
@@ -1369,20 +1331,17 @@ function Paginator(props) {
       firstRun.current = false;
       return;
     }
-
     var totalRecords = props.totalRecords;
     var totalPages = Math.ceil(totalRecords / state.pageLimit);
-    setState(_objectSpread2({}, state, {
+    setState(_objectSpread2(_objectSpread2({}, state), {}, {
       totalRecords: props.totalRecords,
       totalPages: totalPages
     }));
   }, [props.totalRecords]);
-
   var handleClick = function handleClick(page, evt) {
     evt.preventDefault();
     gotoPage(page);
   };
-
   var handleMoveLeft = React.useCallback(function (evt) {
     evt.preventDefault();
     gotoPage(props.currentPage - state.pageNeighbours * 2 - 1);
@@ -1397,7 +1356,6 @@ function Paginator(props) {
     var pageNeighbours = state.pageNeighbours; //Pages between first and middle block
 
     var totalNumbers = state.pageNeighbours * 2 + 3; //Neigbours on both sides including first, middle and last
-
     var totalBlocks = totalNumbers + 2; //including left and right buttons
 
     if (totalPages > totalBlocks) {
@@ -1414,48 +1372,44 @@ function Paginator(props) {
       var rightSpill = endPage < beforeLastPage;
       var leftSpillPage = LEFT_PAGE;
       var rightSpillPage = RIGHT_PAGE;
-
       if (leftSpill && !rightSpill) {
         var extraPages = range(startPage - singleSpillOffset, startPage - 1);
         _pages = [leftSpillPage].concat(_toConsumableArray(extraPages), _toConsumableArray(_pages));
       } else if (!leftSpill && rightSpill) {
         var _extraPages = range(endPage + 1, endPage + singleSpillOffset);
-
         _pages = [].concat(_toConsumableArray(_pages), _toConsumableArray(_extraPages), [rightSpillPage]);
       } else if (leftSpill && rightSpill) {
         _pages = [leftSpillPage].concat(_toConsumableArray(_pages), [rightSpillPage]);
       }
-
       return [1].concat(_toConsumableArray(_pages), [totalPages]);
     }
-
     return range(1, totalPages);
   }, [state.totalPages, props.currentPage, state.pageNeighbours]);
   if (!state.totalRecords) return null;
   if (state.totalPages === 1) return null;
   var currentPage = props.currentPage;
   var pages = fetchPageNumbers();
-  return React__default.createElement("ul", {
+  return /*#__PURE__*/React__default.createElement("ul", {
     className: props.pageContainerClass
   }, pages.map(function (page, index) {
-    if (page === LEFT_PAGE) return React__default.createElement("li", {
+    if (page === LEFT_PAGE) return /*#__PURE__*/React__default.createElement("li", {
       className: props.pageItemClass,
       key: index
-    }, React__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: props.pagePrevClass,
       onClick: handleMoveLeft
     }, props.pagePrevText));
-    if (page === RIGHT_PAGE) return React__default.createElement("li", {
+    if (page === RIGHT_PAGE) return /*#__PURE__*/React__default.createElement("li", {
       className: props.pageItemClass,
       key: index
-    }, React__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: props.pageNextClass,
       onClick: handleMoveRight
     }, props.pageNextText));
-    return React__default.createElement("li", {
+    return /*#__PURE__*/React__default.createElement("li", {
       className: "".concat(props.pageItemClass, " ").concat(currentPage === page ? props.pageActiveClass : null),
       key: index
-    }, React__default.createElement("button", {
+    }, /*#__PURE__*/React__default.createElement("button", {
       className: props.pageLinkClass,
       onClick: function onClick(e) {
         return handleClick(page, e);
@@ -1463,7 +1417,6 @@ function Paginator(props) {
     }, page));
   }));
 }
-
 Paginator.defaultProps = {
   pageContainerClass: 'react-hooks-paginator',
   pageActiveClass: 'active',

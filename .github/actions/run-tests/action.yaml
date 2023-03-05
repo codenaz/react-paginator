@@ -1,10 +1,10 @@
 name: "Run tests"
-description: "Runs the tests. Requires that the repo is checked out and gcloud credentials are set."
+description: "Runs the tests"
 runs:
   using: "composite"
   steps:
     - name: Install deps
-      run: npm ci
+      run: npm install
       shell: bash
 
     - name: Test

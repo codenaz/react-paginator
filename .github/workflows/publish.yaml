@@ -3,10 +3,6 @@ name: Publish to npm
 on:
   workflow_dispatch: {}
   workflow_call:
-    inputs:
-      version:
-        required: true
-        type: string
 
 env:
   FORCE_COLOR: 1

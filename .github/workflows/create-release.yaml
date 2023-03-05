@@ -24,4 +24,4 @@ jobs:
     needs: create-release
     if: ${{ needs.create-release.outputs.release_created }}
     secrets:
-      NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+      NPM_TOKEN: ${{ secrets.NPM_TOKEN }}

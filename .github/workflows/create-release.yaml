@@ -18,6 +18,11 @@ jobs:
           package-name: react-hooks-paginator
           default-branch: main
           changelog-path: CHANGELOG.md
+
+  test:
+    uses: ./.github/workflows/test.yaml
+    needs: create-release
+    if: ${{ !needs.create-release.outputs.release_created }}
   
   deploy:
     uses: ./.github/workflows/publish.yaml

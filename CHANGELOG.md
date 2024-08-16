@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.3](https://github.com/codenaz/react-paginator/compare/v0.5.2...v0.5.3) (2024-08-16)
+
+
+### Bug Fixes
+
+* declare props as optional ([9833d12](https://github.com/codenaz/react-paginator/commit/9833d12ccca3d029864d1016b169cc52e2d3de96))
+
 ## [0.5.2](https://github.com/codenaz/react-paginator/compare/v0.5.1...v0.5.2) (2024-08-16)
 
 

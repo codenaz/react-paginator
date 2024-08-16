@@ -2,128 +2,9 @@
 
 var React = require('react');
 
-function _iterableToArrayLimit(arr, i) {
-  var _i = null == arr ? null : "undefined" != typeof Symbol && arr[Symbol.iterator] || arr["@@iterator"];
-  if (null != _i) {
-    var _s,
-      _e,
-      _x,
-      _r,
-      _arr = [],
-      _n = !0,
-      _d = !1;
-    try {
-      if (_x = (_i = _i.call(arr)).next, 0 === i) {
-        if (Object(_i) !== _i) return;
-        _n = !1;
-      } else for (; !(_n = (_s = _x.call(_i)).done) && (_arr.push(_s.value), _arr.length !== i); _n = !0);
-    } catch (err) {
-      _d = !0, _e = err;
-    } finally {
-      try {
-        if (!_n && null != _i.return && (_r = _i.return(), Object(_r) !== _r)) return;
-      } finally {
-        if (_d) throw _e;
-      }
-    }
-    return _arr;
-  }
-}
-function ownKeys(object, enumerableOnly) {
-  var keys = Object.keys(object);
-  if (Object.getOwnPropertySymbols) {
-    var symbols = Object.getOwnPropertySymbols(object);
-    enumerableOnly && (symbols = symbols.filter(function (sym) {
-      return Object.getOwnPropertyDescriptor(object, sym).enumerable;
-    })), keys.push.apply(keys, symbols);
-  }
-  return keys;
-}
-function _objectSpread2(target) {
-  for (var i = 1; i < arguments.length; i++) {
-    var source = null != arguments[i] ? arguments[i] : {};
-    i % 2 ? ownKeys(Object(source), !0).forEach(function (key) {
-      _defineProperty(target, key, source[key]);
-    }) : Object.getOwnPropertyDescriptors ? Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)) : ownKeys(Object(source)).forEach(function (key) {
-      Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key));
-    });
-  }
-  return target;
-}
-function _defineProperty(obj, key, value) {
-  key = _toPropertyKey(key);
-  if (key in obj) {
-    Object.defineProperty(obj, key, {
-      value: value,
-      enumerable: true,
-      configurable: true,
-      writable: true
-    });
-  } else {
-    obj[key] = value;
-  }
-  return obj;
-}
-function _slicedToArray(arr, i) {
-  return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _unsupportedIterableToArray(arr, i) || _nonIterableRest();
-}
-function _toConsumableArray(arr) {
-  return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread();
-}
-function _arrayWithoutHoles(arr) {
-  if (Array.isArray(arr)) return _arrayLikeToArray(arr);
-}
-function _arrayWithHoles(arr) {
-  if (Array.isArray(arr)) return arr;
-}
-function _iterableToArray(iter) {
-  if (typeof Symbol !== "undefined" && iter[Symbol.iterator] != null || iter["@@iterator"] != null) return Array.from(iter);
-}
-function _unsupportedIterableToArray(o, minLen) {
-  if (!o) return;
-  if (typeof o === "string") return _arrayLikeToArray(o, minLen);
-  var n = Object.prototype.toString.call(o).slice(8, -1);
-  if (n === "Object" && o.constructor) n = o.constructor.name;
-  if (n === "Map" || n === "Set") return Array.from(o);
-  if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen);
-}
-function _arrayLikeToArray(arr, len) {
-  if (len == null || len > arr.length) len = arr.length;
-  for (var i = 0, arr2 = new Array(len); i < len; i++) arr2[i] = arr[i];
-  return arr2;
-}
-function _nonIterableSpread() {
-  throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _nonIterableRest() {
-  throw new TypeError("Invalid attempt to destructure non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method.");
-}
-function _toPrimitive(input, hint) {
-  if (typeof input !== "object" || input === null) return input;
-  var prim = input[Symbol.toPrimitive];
-  if (prim !== undefined) {
-    var res = prim.call(input, hint || "default");
-    if (typeof res !== "object") return res;
-    throw new TypeError("@@toPrimitive must return a primitive value.");
-  }
-  return (hint === "string" ? String : Number)(input);
-}
-function _toPropertyKey(arg) {
-  var key = _toPrimitive(arg, "string");
-  return typeof key === "symbol" ? key : String(key);
-}
+var propTypes = {exports: {}};
 
-var propTypesExports = {};
-var propTypes = {
-  get exports(){ return propTypesExports; },
-  set exports(v){ propTypesExports = v; },
-};
-
-var reactIsExports = {};
-var reactIs = {
-  get exports(){ return reactIsExports; },
-  set exports(v){ reactIsExports = v; },
-};
+var reactIs = {exports: {}};
 
 var reactIs_production_min = {};
 
@@ -342,17 +223,15 @@ function requireReactIs_development () {
 var hasRequiredReactIs;
 
 function requireReactIs () {
-	if (hasRequiredReactIs) return reactIsExports;
+	if (hasRequiredReactIs) return reactIs.exports;
 	hasRequiredReactIs = 1;
-	(function (module) {
 
-		if (process.env.NODE_ENV === 'production') {
-		  module.exports = requireReactIs_production_min();
-		} else {
-		  module.exports = requireReactIs_development();
-		}
-} (reactIs));
-	return reactIsExports;
+	if (process.env.NODE_ENV === 'production') {
+	  reactIs.exports = requireReactIs_production_min();
+	} else {
+	  reactIs.exports = requireReactIs_development();
+	}
+	return reactIs.exports;
 }
 
 /*
@@ -1303,11 +1182,13 @@ if (process.env.NODE_ENV !== 'production') {
   propTypes.exports = requireFactoryWithThrowingShims()();
 }
 
+var propTypesExports = propTypes.exports;
+
 function styleInject(css, ref) {
   if ( ref === void 0 ) ref = {};
   var insertAt = ref.insertAt;
 
-  if (!css || typeof document === 'undefined') { return; }
+  if (typeof document === 'undefined') { return; }
 
   var head = document.head || document.getElementsByTagName('head')[0];
   var style = document.createElement('style');
@@ -1330,15 +1211,15 @@ function styleInject(css, ref) {
   }
 }
 
-var css_248z = ".react-hooks-paginator {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  margin: 1rem 0; }\n  .react-hooks-paginator .page-item {\n    list-style: none; }\n    .react-hooks-paginator .page-item:first-child .page-link {\n      margin-left: 0;\n      border-top-left-radius: 3px;\n      border-bottom-left-radius: 3px; }\n    .react-hooks-paginator .page-item:last-child .page-link {\n      border-top-right-radius: 3px;\n      border-bottom-right-radius: 3px; }\n    .react-hooks-paginator .page-item:hover .page-link, .react-hooks-paginator .page-item.active .page-link {\n      background-color: #3895d3;\n      border-color: #3895d3;\n      color: #fff; }\n  .react-hooks-paginator .page-link {\n    border: 1px solid #dee2e6;\n    color: #4a4a4a;\n    margin-left: -1px;\n    outline: none;\n    padding: 0.5rem 0.75rem;\n    text-decoration: none;\n    transition: all 0.2s; }\n";
+var css_248z = ".react-hooks-paginator {\n  align-items: center;\n  display: flex;\n  justify-content: center;\n  margin: 1rem 0;\n}\n.react-hooks-paginator .page-item {\n  list-style: none;\n}\n.react-hooks-paginator .page-item:first-child .page-link {\n  margin-left: 0;\n  border-top-left-radius: 3px;\n  border-bottom-left-radius: 3px;\n}\n.react-hooks-paginator .page-item:last-child .page-link {\n  border-top-right-radius: 3px;\n  border-bottom-right-radius: 3px;\n}\n.react-hooks-paginator .page-item:hover .page-link, .react-hooks-paginator .page-item.active .page-link {\n  background-color: #3895d3;\n  border-color: #3895d3;\n  color: #fff;\n}\n.react-hooks-paginator .page-link {\n  border: 1px solid #dee2e6;\n  color: #4a4a4a;\n  margin-left: -1px;\n  outline: none;\n  padding: 0.5rem 0.75rem;\n  text-decoration: none;\n  transition: all 0.2s;\n}";
 styleInject(css_248z);
 
-var LEFT_PAGE = 'LEFT';
-var RIGHT_PAGE = 'RIGHT';
-var range = function range(from, to) {
-  var step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
-  var i = from;
-  var pool = [];
+const LEFT_PAGE = 'LEFT';
+const RIGHT_PAGE = 'RIGHT';
+const range = function (from, to) {
+  let step = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 1;
+  let i = from;
+  const pool = [];
   while (i <= to) {
     pool.push(i);
     i += step;
@@ -1346,107 +1227,104 @@ var range = function range(from, to) {
   return pool;
 };
 function Paginator(props) {
-  var init = function init() {
-    var _props$totalRecords = props.totalRecords,
-      totalRecords = _props$totalRecords === void 0 ? null : _props$totalRecords,
-      _props$pageLimit = props.pageLimit,
-      pageLimit = _props$pageLimit === void 0 ? 20 : _props$pageLimit,
-      _props$pageNeighbours = props.pageNeighbours,
-      pageNeighbours = _props$pageNeighbours === void 0 ? 0 : _props$pageNeighbours;
+  const init = () => {
+    let {
+      totalRecords = null,
+      pageLimit = 20,
+      pageNeighbours = 0
+    } = props;
     pageLimit = typeof pageLimit === 'number' ? pageLimit : 20;
     totalRecords = typeof totalRecords === 'number' ? totalRecords : 0;
     pageNeighbours = typeof pageNeighbours === 'number' ? Math.max(0, Math.min(pageNeighbours, 2)) : 0;
-    var totalPages = Math.ceil(totalRecords / pageLimit);
+    const totalPages = Math.ceil(totalRecords / pageLimit);
     return {
-      pageLimit: pageLimit,
-      totalRecords: totalRecords,
-      pageNeighbours: pageNeighbours,
-      totalPages: totalPages
+      pageLimit,
+      totalRecords,
+      pageNeighbours,
+      totalPages
     };
   };
-  var _useState = React.useState(function () {
-      return init();
-    }),
-    _useState2 = _slicedToArray(_useState, 2),
-    state = _useState2[0],
-    setState = _useState2[1];
-  var firstRun = React.useRef(true);
-  var gotoPage = React.useCallback(function (page) {
-    var currentPage = Math.max(1, Math.min(page, state.totalPages));
+  const [state, setState] = React.useState(() => init());
+  const firstRun = React.useRef(true);
+  const gotoPage = React.useCallback(page => {
+    const currentPage = Math.max(1, Math.min(page, state.totalPages));
     props.setCurrentPage(currentPage);
   }, [state.totalPages, props.pageLimit]);
-  React.useEffect(function () {
+  React.useEffect(() => {
     gotoPage(props.currentPage || 1);
   }, [gotoPage, props.currentPage]);
-  React.useEffect(function () {
+  React.useEffect(() => {
     props.setOffset((props.currentPage - 1) * props.pageLimit);
   }, [props.currentPage]);
-  React.useEffect(function () {
+  React.useEffect(() => {
     if (firstRun.current) {
       firstRun.current = false;
       return;
     }
-    var totalRecords = props.totalRecords;
-    var totalPages = Math.ceil(totalRecords / state.pageLimit);
-    setState(_objectSpread2(_objectSpread2({}, state), {}, {
+    const totalRecords = props.totalRecords;
+    const totalPages = Math.ceil(totalRecords / state.pageLimit);
+    setState({
+      ...state,
       totalRecords: props.totalRecords,
-      totalPages: totalPages
-    }));
+      totalPages
+    });
   }, [props.totalRecords]);
-  var handleClick = function handleClick(page, evt) {
+  const handleClick = (page, evt) => {
     evt.preventDefault();
     gotoPage(page);
   };
-  var handleMoveLeft = React.useCallback(function (evt) {
+  const handleMoveLeft = React.useCallback(evt => {
     evt.preventDefault();
     gotoPage(props.currentPage - state.pageNeighbours * 2 - 1);
   }, [props.currentPage]);
-  var handleMoveRight = React.useCallback(function (evt) {
+  const handleMoveRight = React.useCallback(evt => {
     evt.preventDefault();
     gotoPage(props.currentPage + state.pageNeighbours * 2 + 1);
   }, [props.currentPage, state.pageNeighbours]);
-  var fetchPageNumbers = React.useCallback(function () {
-    var totalPages = state.totalPages;
-    var currentPage = props.currentPage;
-    var pageNeighbours = state.pageNeighbours; //Pages between first and middle block
+  const fetchPageNumbers = React.useCallback(() => {
+    const totalPages = state.totalPages;
+    const currentPage = props.currentPage;
+    const pageNeighbours = state.pageNeighbours; //Pages between first and middle block
 
-    var totalNumbers = state.pageNeighbours * 2 + 3; //Neigbours on both sides including first, middle and last
-    var totalBlocks = totalNumbers + 2; //including left and right buttons
+    const totalNumbers = state.pageNeighbours * 2 + 3; //Neigbours on both sides including first, middle and last
+    const totalBlocks = totalNumbers + 2; //including left and right buttons
 
     if (totalPages > totalBlocks) {
-      var _pages = [];
-      var leftBound = currentPage - pageNeighbours;
-      var rightBound = currentPage + pageNeighbours;
-      var beforeLastPage = totalPages - 1;
-      var startPage = leftBound > 2 ? leftBound : 2;
-      var endPage = rightBound < beforeLastPage ? rightBound : beforeLastPage;
-      _pages = range(startPage, endPage);
-      var pagesCount = _pages.length;
-      var singleSpillOffset = totalNumbers - pagesCount - 1;
-      var leftSpill = startPage > 2;
-      var rightSpill = endPage < beforeLastPage;
-      var leftSpillPage = LEFT_PAGE;
-      var rightSpillPage = RIGHT_PAGE;
+      let pages = [];
+      const leftBound = currentPage - pageNeighbours;
+      const rightBound = currentPage + pageNeighbours;
+      const beforeLastPage = totalPages - 1;
+      const startPage = leftBound > 2 ? leftBound : 2;
+      const endPage = rightBound < beforeLastPage ? rightBound : beforeLastPage;
+      pages = range(startPage, endPage);
+      const pagesCount = pages.length;
+      const singleSpillOffset = totalNumbers - pagesCount - 1;
+      const leftSpill = startPage > 2;
+      const rightSpill = endPage < beforeLastPage;
+      const leftSpillPage = LEFT_PAGE;
+      const rightSpillPage = RIGHT_PAGE;
       if (leftSpill && !rightSpill) {
-        var extraPages = range(startPage - singleSpillOffset, startPage - 1);
-        _pages = [leftSpillPage].concat(_toConsumableArray(extraPages), _toConsumableArray(_pages));
+        const extraPages = range(startPage - singleSpillOffset, startPage - 1);
+        pages = [leftSpillPage, ...extraPages, ...pages];
       } else if (!leftSpill && rightSpill) {
-        var _extraPages = range(endPage + 1, endPage + singleSpillOffset);
-        _pages = [].concat(_toConsumableArray(_pages), _toConsumableArray(_extraPages), [rightSpillPage]);
+        const extraPages = range(endPage + 1, endPage + singleSpillOffset);
+        pages = [...pages, ...extraPages, rightSpillPage];
       } else if (leftSpill && rightSpill) {
-        _pages = [leftSpillPage].concat(_toConsumableArray(_pages), [rightSpillPage]);
+        pages = [leftSpillPage, ...pages, rightSpillPage];
       }
-      return [1].concat(_toConsumableArray(_pages), [totalPages]);
+      return [1, ...pages, totalPages];
     }
     return range(1, totalPages);
   }, [state.totalPages, props.currentPage, state.pageNeighbours]);
   if (!state.totalRecords) return null;
   if (state.totalPages === 1) return null;
-  var currentPage = props.currentPage;
-  var pages = fetchPageNumbers();
+  const {
+    currentPage
+  } = props;
+  const pages = fetchPageNumbers();
   return /*#__PURE__*/React.createElement("ul", {
     className: props.pageContainerClass
-  }, pages.map(function (page, index) {
+  }, pages.map((page, index) => {
     if (page === LEFT_PAGE) return /*#__PURE__*/React.createElement("li", {
       className: props.pageItemClass,
       key: index
@@ -1462,13 +1340,11 @@ function Paginator(props) {
       onClick: handleMoveRight
     }, props.pageNextText));
     return /*#__PURE__*/React.createElement("li", {
-      className: "".concat(props.pageItemClass, " ").concat(currentPage === page ? props.pageActiveClass : null),
+      className: `${props.pageItemClass} ${currentPage === page ? props.pageActiveClass : null}`,
       key: index
     }, /*#__PURE__*/React.createElement("button", {
       className: props.pageLinkClass,
-      onClick: function onClick(e) {
-        return handleClick(page, e);
-      }
+      onClick: e => handleClick(page, e)
     }, page));
   }));
 }

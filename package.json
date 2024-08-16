@@ -4,6 +4,8 @@
   "version": "0.5.1",
   "main": "dist/index.cjs.js",
   "module": "dist/index.esm.js",
+  "types": "dist/types/index.d.ts",
+  "type": "module",
   "files": [
     "dist/*"
   ],
@@ -25,7 +27,7 @@
   "license": "MIT",
   "scripts": {
     "start": "react-scripts start",
-    "build": "del dist && rollup -c --bundleConfigAsCjs",
+    "build": "del dist && rollup -c",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
     "prepublish": "npm run build"
@@ -45,29 +47,32 @@
   },
   "devDependencies": {
     "@babel/cli": "7.0.0",
-    "@babel/core": "7.0.0",
+    "@babel/core": "7.22.0",
     "@babel/preset-env": "7.9.0",
     "@babel/preset-react": "7.9.0",
+    "@babel/plugin-transform-private-property-in-object": "^7.21.11",
     "@commitlint/cli": "^17.4.4",
     "@commitlint/config-conventional": "^17.4.4",
-    "@rollup/plugin-babel": "^6.0.3",
-    "@rollup/plugin-commonjs": "^24.0.1",
-    "@rollup/plugin-node-resolve": "^15.0.0",
+    "@rollup/plugin-babel": "^6.0.4",
+    "@rollup/plugin-commonjs": "^26.0.1",
+    "@rollup/plugin-node-resolve": "^15.2.3",
+    "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
     "babel-jest": "^23.6.0",
     "babel-loader": "8.0.5",
     "del-cli": "^3.0.0",
     "husky": "^8.0.3",
-    "node-sass": "^8.0.0",
     "prettier": "^1.16.4",
     "react": "^16.8.4",
     "react-dom": "^16.8.4",
-    "react-scripts": "2.1.8",
-    "rollup": "^3.18.0",
+    "react-scripts": "5.0.1",
+    "rollup": "^4.18.0",
+    "rollup-plugin-dts": "^6.1.1",
     "rollup-plugin-peer-deps-external": "^2.2.2",
-    "rollup-plugin-postcss": "^2.1.1",
+    "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^3.3.1",
+    "sass": "^1.77.8",
     "webpack": "4.28.3"
   }
 }

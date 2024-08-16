@@ -3,7 +3,7 @@ name: Create release
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
   create-release:
@@ -16,7 +16,7 @@ jobs:
         with:
           release-type: node
           package-name: react-hooks-paginator
-          default-branch: master
+          default-branch: main
           changelog-path: CHANGELOG.md
   
   deploy:

@@ -1,8 +1,6 @@
 # React Hooks Paginator
 
-[![Build Status](https://travis-ci.org/codenaz/react-paginator.svg?branch=master)](https://travis-ci.org/codenaz/react-paginator)
-
-![demo](https://s5.gifyu.com/images/animate.gif)
+![Build](https://github.com/github/docs/actions/workflows/test.yml/badge.svg?branch=main)
 
 A library for adding simple paginator functionality to your react app.
 

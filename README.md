@@ -1,6 +1,6 @@
 # React Hooks Paginator
 
-![Build](https://github.com/github/docs/actions/workflows/test.yml/badge.svg?branch=main)
+![Build](https://github.com/codenaz/react-paginator/actions/workflows/create-release.yaml/badge.svg?branch=main)
 
 A library for adding simple paginator functionality to your react app.
 

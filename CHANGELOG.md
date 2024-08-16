@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.2](https://github.com/codenaz/react-paginator/compare/v0.5.1...v0.5.2) (2024-08-16)
+
+
+### Bug Fixes
+
+* add typescript support ([c8828ce](https://github.com/codenaz/react-paginator/commit/c8828ce82b785dbcaa4348a8ddd93ac73409fcd5))
+
 ## [0.5.1](https://github.com/codenaz/react-paginator/compare/0.4.2...v0.5.1) (2023-03-05)
 
 

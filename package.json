@@ -46,7 +46,7 @@
     "react-dom": ">=16.8.0"
   },
   "devDependencies": {
-    "@babel/cli": "7.0.0",
+    "@babel/cli": "7.25.6",
     "@babel/core": "7.22.0",
     "@babel/preset-env": "7.9.0",
     "@babel/preset-react": "7.9.0",
@@ -59,7 +59,7 @@
     "@rollup/plugin-typescript": "^11.1.6",
     "@testing-library/jest-dom": "^4.1.2",
     "@testing-library/react": "^9.3.0",
-    "babel-jest": "^23.6.0",
+    "babel-jest": "^29.7.0",
     "babel-loader": "8.0.5",
     "del-cli": "^3.0.0",
     "husky": "^8.0.3",
@@ -73,6 +73,6 @@
     "rollup-plugin-postcss": "^4.0.2",
     "rollup-plugin-visualizer": "^3.3.1",
     "sass": "^1.77.8",
-    "webpack": "4.28.3"
+    "webpack": "5.94.0"
   }
 }

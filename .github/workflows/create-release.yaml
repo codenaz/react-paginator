@@ -7,7 +7,7 @@ on:
 
 jobs:
   create-release:
-    runs-on: ubuntu-20.04
+    runs-on: ubuntu-latest
     outputs:
       release_created: ${{ steps.release.outputs.release_created }}
     steps:
@@ -23,7 +23,7 @@ jobs:
     uses: ./.github/workflows/test.yaml
     needs: create-release
     if: ${{ !needs.create-release.outputs.release_created }}
-  
+
   deploy:
     uses: ./.github/workflows/publish.yaml
     needs: create-release

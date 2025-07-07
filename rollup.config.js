@@ -5,7 +5,7 @@ import postcss from 'rollup-plugin-postcss';
 import resolve from '@rollup/plugin-node-resolve';
 import visualizer from 'rollup-plugin-visualizer';
 import { dts } from 'rollup-plugin-dts';
-import * as pkg from './package.json' assert { type: "json" };
+import * as pkg from './package.json' with { type: "json" };
 
 const config = [
   {

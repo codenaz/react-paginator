@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.4](https://github.com/codenaz/react-paginator/compare/v0.5.3...v0.5.4) (2025-07-19)
+
+
+### Bug Fixes
+
+* update dependencies ([36ac668](https://github.com/codenaz/react-paginator/commit/36ac6682af617f147d196e44cc1a039baf4a8438))
+
 ## [0.5.3](https://github.com/codenaz/react-paginator/compare/v0.5.2...v0.5.3) (2024-08-16)
 
 
